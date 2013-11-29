@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3c370f67-7b6c-453c-9e88-6c0a754f4cf9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Draught/Service1/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="572d4788-cdee-4a43-a51c-80e9ffa213fb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?xsd=xsd2" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="68add408-27a1-4003-8af4-78eed1ebbdc7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="9a66e90d-bc10-4352-b434-abd69194e9c8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="f4854c1b-1c0b-4542-8a27-364cb2988b4a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="846df2c8-32a5-4093-b937-61ff6fd7e5c1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?disco" />
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="b2c39f09-9a51-4dea-ac30-8b19bf2e0505" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Draught/Service1/?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

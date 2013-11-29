@@ -1,2 +1,11 @@
 C:\Users\Neil\Documents\MDW\Draghts\Draghts\bin\Debug\Draghts.exe.config
 C:\Users\Koech\Desktop\draughts-game\Draghts\bin\Debug\Draghts.exe.config
+C:\Users\Koech\Desktop\draughts-game\Draghts\bin\Debug\Draghts.exe
+C:\Users\Koech\Desktop\draughts-game\Draghts\bin\Debug\Draghts.pdb
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.csprojResolveAssemblyReference.cache
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.Form1.resources
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.Form2.resources
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.Properties.Resources.resources
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.csproj.GenerateResource.Cache
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.exe
+C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.pdb

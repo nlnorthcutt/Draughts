@@ -4,16 +4,19 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Data.OleDb;
 
 namespace Draught
 {
 
     public class Service1 : IPortal,IGamePlay
     {
+        OleDbConnection connect = new OleDbConnection();
+
         /// <summary>
         /// This method is used by the piece to move.
         /// </summary>
-        public void move()
+        public void move(int newX, int newY)
         {  
         }
         /// <summary>
@@ -27,7 +30,23 @@ namespace Draught
 
         public bool signUp(string userName, string password)
         {
-           return true;
+            try
+            {
+                connect.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../../../Database/DraughtDB.accdb;Persist Security Info=False;";
+                connect.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = connect;
+
+                cmd.CommandText = "INSERT INTO RegistrationTable VALUES('" + userName + "','" + password + "')";
+                cmd.ExecuteNonQuery();
+
+                connect.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         /// <summary>
         /// This method will be used by the player to log in

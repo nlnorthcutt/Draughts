@@ -5,27 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Runtime.Serialization;
+using System.Data.OleDb;
 
 namespace Draught
 {
     [DataContract]
-    public class Player
-    {
-        [DataMember]
-        string userName;
-
-        [DataMember]
-        string password;
-
-        [DataMember]
-        bool loggedIn;
-
-        [DataMember]
-        public IGamePlayCallback GamePlayCallBack { get; set; };
-
-    }
-
-     [DataContract]
     public class Game
     {
         [DataMember]
@@ -37,32 +21,75 @@ namespace Draught
         [DataMember]
         List<Piece> listOfPiece;
 
-         [DataMember]
+        [DataMember]
         List<BoardSquare> listOfBoardSquares;
 
 
+    }
+    [DataContract]
+    public class Piece
+    {
+        int xCoordinate;
+        int yCoordinate;
+        string color;
+
+        [DataMember]
+        public int XCoordinate
+        {
+            get { return xCoordinate; }
+            set { xCoordinate = value; }
+        }
+
+        [DataMember]
+        public int YCoordinate
+        {
+            get { return yCoordinate; }
+            set { yCoordinate = value; }
+        }
+        public string Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+    }
+    [DataContract]
+    public class BoardSquare
+    {
+        int xCoordinate;
+        int yCoordinate;
+        string color;
+
+        [DataMember]
+        public int XCoordinate
+        {
+            get { return xCoordinate; }
+            set { xCoordinate = value; }
+        }
+
+        [DataMember]
+        public int YCoordinate
+        {
+            get { return yCoordinate; }
+            set { yCoordinate = value; }
+        }
+        public string Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
     }
 
     [ServiceContract(Namespace = "Draught", CallbackContract = typeof(IGamePlayCallback))]
     interface IGamePlay
     {
         [OperationContract]
-        bool signUp(string userName, string password);
+        void move(int newX, int newY);
 
         [OperationContract]
-        bool logIn(string userName, string password);
+        bool sendMessage(string recipient, string message);
 
         [OperationContract]
-        bool Invite(string recipient);
-
-        [OperationContract]
-        void logOut();
-
-        [OperationContract]
-        bool sendMessage(string recipient,string message);
-
-        [OperationContract]
-        bool makeMove(Piece piece,BoardSquare boardSquare);
+        bool makeMove(Piece piece, BoardSquare boardSquare);
 
         [OperationContract]
         void Subscribe();
@@ -80,9 +107,9 @@ namespace Draught
 
     public interface IGamePlayCallback
     {
-        void OnInvitation(string sender,string recipient) ; //To inform a user when an invitaion from another player has been recieved
+        void OnInvitation(string sender, string recipient); //To inform a user when an invitaion from another player has been recieved
         void Playerturn(string userName); //To inform the player that it is his/her turn to play
-        void messageRecieved(string sender,string sender); //To inform a user when a message from theother player has been recieved
+        void messageRecieved(string sender, string message); //To inform a user when a message from the other player has been recieved
         void gameInterupted(); //To inform a player when the game has been interrupted by the other player
     }
 }
