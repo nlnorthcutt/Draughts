@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Runtime.Serialization;
 using System.Data.OleDb;
+using System.Drawing;
 
 namespace Draught
 {
@@ -20,9 +21,6 @@ namespace Draught
 
         [DataMember]
         List<Piece> listOfPiece;
-
-        [DataMember]
-        List<BoardSquare> listOfBoardSquares;
 
 
     }
@@ -52,36 +50,12 @@ namespace Draught
             set { color = value; }
         }
     }
-    [DataContract]
-    public class BoardSquare
-    {
-        int xCoordinate;
-        int yCoordinate;
-        string color;
 
-        [DataMember]
-        public int XCoordinate
-        {
-            get { return xCoordinate; }
-            set { xCoordinate = value; }
-        }
-
-        [DataMember]
-        public int YCoordinate
-        {
-            get { return yCoordinate; }
-            set { yCoordinate = value; }
-        }
-        public string Color
-        {
-            get { return color; }
-            set { color = value; }
-        }
-    }
 
     [ServiceContract(Namespace = "Draught", CallbackContract = typeof(IGamePlayCallback))]
     interface IGamePlay
     {
+      
         [OperationContract]
         void move(int newX, int newY);
 
@@ -89,7 +63,7 @@ namespace Draught
         bool sendMessage(string recipient, string message);
 
         [OperationContract]
-        bool makeMove(Piece piece, BoardSquare boardSquare);
+        bool makeMove(Piece piece, int x,int y);
 
         [OperationContract]
         void Subscribe();

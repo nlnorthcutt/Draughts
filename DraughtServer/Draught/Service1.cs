@@ -11,7 +11,16 @@ namespace Draught
 
     public class Service1 : IPortal,IGamePlay
     {
+        List<Piece> listOfPieces = new List<Piece>();
+
+        public Service1()
+        {
+
+
+        }
+
         OleDbConnection connect = new OleDbConnection();
+
 
         /// <summary>
         /// This method is used by the piece to move.
@@ -59,7 +68,35 @@ namespace Draught
 
         public bool logIn(string userName, string password)
         {
-            return true;
+            string result;
+            try
+            {
+                connect.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../../../Database/DraughtDB.accdb;Persist Security Info=False;";
+                connect.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = connect;
+
+                cmd.CommandText = "SELECT Password FROM RegistrationTable WHERE Username ='"+userName+"'";
+                result=Convert.ToString(cmd.ExecuteScalar());
+                connect.Close();
+                if (result == password)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+
+                }
+
+            }
+            catch
+            {
+                return false;
+                
+            }
+ 
         }
 
     /************************************************************************************************/
@@ -95,13 +132,18 @@ namespace Draught
         }
 
      /****************************************************************************************************/
+   
+
+
+
+     /****************************************************************************************************/
         /// <summary>
         /// This method will be called when a player wants to move the piece on the board
         /// </summary>
         /// <param name="piece">The piece to be moved</param>
         /// <param name="boardSquare">The square on the board that the piece will be moved to</param>
         /// <returns>True if successful and false otherwise</returns>
-        public bool makeMove(Piece piece, BoardSquare boardSquare)
+        public bool makeMove(Piece piece, int xPos,int yPos)
         {
             return true;
         }
