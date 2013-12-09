@@ -21,5 +21,15 @@ namespace Draghts
         {
 
         }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            //label3.Text = Convert.ToString(e.Location);
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            label3.Text = Convert.ToString(e.Location);
+        }
     }
 }
