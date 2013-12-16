@@ -23,6 +23,9 @@ namespace Draghts.DraughtsServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CorrespondingBSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int XCoordinateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -39,63 +42,15 @@ namespace Draghts.DraughtsServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int XCoordinate {
+        public int CorrespondingBS {
             get {
-                return this.XCoordinateField;
+                return this.CorrespondingBSField;
             }
             set {
-                if ((this.XCoordinateField.Equals(value) != true)) {
-                    this.XCoordinateField = value;
-                    this.RaisePropertyChanged("XCoordinate");
+                if ((this.CorrespondingBSField.Equals(value) != true)) {
+                    this.CorrespondingBSField = value;
+                    this.RaisePropertyChanged("CorrespondingBS");
                 }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int YCoordinate {
-            get {
-                return this.YCoordinateField;
-            }
-            set {
-                if ((this.YCoordinateField.Equals(value) != true)) {
-                    this.YCoordinateField = value;
-                    this.RaisePropertyChanged("YCoordinate");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BoardSquare", Namespace="http://schemas.datacontract.org/2004/07/Draught")]
-    [System.SerializableAttribute()]
-    public partial class BoardSquare : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int XCoordinateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int YCoordinateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
             }
         }
         
@@ -228,11 +183,11 @@ namespace Draghts.DraughtsServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="Draught", ConfigurationName="DraughtsServiceReference.IGamePlay")]
     public interface IGamePlay {
         
-        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/move", ReplyAction="Draught/IGamePlay/moveResponse")]
-        void move(int newX, int newY);
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/changeLocation", ReplyAction="Draught/IGamePlay/changeLocationResponse")]
+        void changeLocation(Draghts.DraughtsServiceReference.Piece pc, int newX, int newY);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/move", ReplyAction="Draught/IGamePlay/moveResponse")]
-        System.Threading.Tasks.Task moveAsync(int newX, int newY);
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/changeLocation", ReplyAction="Draught/IGamePlay/changeLocationResponse")]
+        System.Threading.Tasks.Task changeLocationAsync(Draghts.DraughtsServiceReference.Piece pc, int newX, int newY);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/sendMessage", ReplyAction="Draught/IGamePlay/sendMessageResponse")]
         bool sendMessage(string recipient, string message);
@@ -241,10 +196,10 @@ namespace Draghts.DraughtsServiceReference {
         System.Threading.Tasks.Task<bool> sendMessageAsync(string recipient, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
-        bool makeMove(Draghts.DraughtsServiceReference.Piece piece, Draghts.DraughtsServiceReference.BoardSquare boardSquare);
+        bool makeMove(Draghts.DraughtsServiceReference.Piece piece, int x, int y);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
-        System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, Draghts.DraughtsServiceReference.BoardSquare boardSquare);
+        System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, int x, int y);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/Subscribe", ReplyAction="Draught/IGamePlay/SubscribeResponse")]
         void Subscribe();
@@ -257,6 +212,12 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/quitGame", ReplyAction="Draught/IGamePlay/quitGameResponse")]
         System.Threading.Tasks.Task quitGameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/getPieceList", ReplyAction="Draught/IGamePlay/getPieceListResponse")]
+        Draghts.DraughtsServiceReference.Piece[] getPieceList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/getPieceList", ReplyAction="Draught/IGamePlay/getPieceListResponse")]
+        System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Piece[]> getPieceListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -286,12 +247,12 @@ namespace Draghts.DraughtsServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public void move(int newX, int newY) {
-            base.Channel.move(newX, newY);
+        public void changeLocation(Draghts.DraughtsServiceReference.Piece pc, int newX, int newY) {
+            base.Channel.changeLocation(pc, newX, newY);
         }
         
-        public System.Threading.Tasks.Task moveAsync(int newX, int newY) {
-            return base.Channel.moveAsync(newX, newY);
+        public System.Threading.Tasks.Task changeLocationAsync(Draghts.DraughtsServiceReference.Piece pc, int newX, int newY) {
+            return base.Channel.changeLocationAsync(pc, newX, newY);
         }
         
         public bool sendMessage(string recipient, string message) {
@@ -302,12 +263,12 @@ namespace Draghts.DraughtsServiceReference {
             return base.Channel.sendMessageAsync(recipient, message);
         }
         
-        public bool makeMove(Draghts.DraughtsServiceReference.Piece piece, Draghts.DraughtsServiceReference.BoardSquare boardSquare) {
-            return base.Channel.makeMove(piece, boardSquare);
+        public bool makeMove(Draghts.DraughtsServiceReference.Piece piece, int x, int y) {
+            return base.Channel.makeMove(piece, x, y);
         }
         
-        public System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, Draghts.DraughtsServiceReference.BoardSquare boardSquare) {
-            return base.Channel.makeMoveAsync(piece, boardSquare);
+        public System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, int x, int y) {
+            return base.Channel.makeMoveAsync(piece, x, y);
         }
         
         public void Subscribe() {
@@ -324,6 +285,14 @@ namespace Draghts.DraughtsServiceReference {
         
         public System.Threading.Tasks.Task quitGameAsync() {
             return base.Channel.quitGameAsync();
+        }
+        
+        public Draghts.DraughtsServiceReference.Piece[] getPieceList() {
+            return base.Channel.getPieceList();
+        }
+        
+        public System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Piece[]> getPieceListAsync() {
+            return base.Channel.getPieceListAsync();
         }
     }
 }

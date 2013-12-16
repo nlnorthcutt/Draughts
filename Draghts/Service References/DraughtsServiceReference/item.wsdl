@@ -31,11 +31,11 @@
   <wsdl:message name="IPortal_logOut_OutputMessage">
     <wsdl:part name="parameters" element="tns:logOutResponse" />
   </wsdl:message>
-  <wsdl:message name="IGamePlay_move_InputMessage">
-    <wsdl:part name="parameters" element="tns:move" />
+  <wsdl:message name="IGamePlay_changeLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:changeLocation" />
   </wsdl:message>
-  <wsdl:message name="IGamePlay_move_OutputMessage">
-    <wsdl:part name="parameters" element="tns:moveResponse" />
+  <wsdl:message name="IGamePlay_changeLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:changeLocationResponse" />
   </wsdl:message>
   <wsdl:message name="IGamePlay_sendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:sendMessage" />
@@ -61,6 +61,12 @@
   <wsdl:message name="IGamePlay_quitGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:quitGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IGamePlay_getPieceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPieceList" />
+  </wsdl:message>
+  <wsdl:message name="IGamePlay_getPieceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPieceListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPortal">
     <wsdl:operation name="signUp">
       <wsdl:input wsaw:Action="Draught/IPortal/signUp" message="tns:IPortal_signUp_InputMessage" />
@@ -80,9 +86,9 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGamePlay">
-    <wsdl:operation name="move">
-      <wsdl:input wsaw:Action="Draught/IGamePlay/move" message="tns:IGamePlay_move_InputMessage" />
-      <wsdl:output wsaw:Action="Draught/IGamePlay/moveResponse" message="tns:IGamePlay_move_OutputMessage" />
+    <wsdl:operation name="changeLocation">
+      <wsdl:input wsaw:Action="Draught/IGamePlay/changeLocation" message="tns:IGamePlay_changeLocation_InputMessage" />
+      <wsdl:output wsaw:Action="Draught/IGamePlay/changeLocationResponse" message="tns:IGamePlay_changeLocation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="sendMessage">
       <wsdl:input wsaw:Action="Draught/IGamePlay/sendMessage" message="tns:IGamePlay_sendMessage_InputMessage" />
@@ -99,6 +105,10 @@
     <wsdl:operation name="quitGame">
       <wsdl:input wsaw:Action="Draught/IGamePlay/quitGame" message="tns:IGamePlay_quitGame_InputMessage" />
       <wsdl:output wsaw:Action="Draught/IGamePlay/quitGameResponse" message="tns:IGamePlay_quitGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPieceList">
+      <wsdl:input wsaw:Action="Draught/IGamePlay/getPieceList" message="tns:IGamePlay_getPieceList_InputMessage" />
+      <wsdl:output wsaw:Action="Draught/IGamePlay/getPieceListResponse" message="tns:IGamePlay_getPieceList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

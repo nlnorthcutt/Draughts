@@ -55,15 +55,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="move">
+  <xs:element name="changeLocation">
     <xs:complexType>
       <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Draught" minOccurs="0" name="pc" nillable="true" type="q1:Piece" />
         <xs:element minOccurs="0" name="newX" type="xs:int" />
         <xs:element minOccurs="0" name="newY" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="moveResponse">
+  <xs:element name="changeLocationResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -86,8 +87,9 @@
   <xs:element name="makeMove">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Draught" minOccurs="0" name="piece" nillable="true" type="q1:Piece" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Draught" minOccurs="0" name="boardSquare" nillable="true" type="q2:BoardSquare" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Draught" minOccurs="0" name="piece" nillable="true" type="q2:Piece" />
+        <xs:element minOccurs="0" name="x" type="xs:int" />
+        <xs:element minOccurs="0" name="y" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -116,6 +118,18 @@
   <xs:element name="quitGameResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPieceList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPieceListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Draught" minOccurs="0" name="getPieceListResult" nillable="true" type="q3:ArrayOfPiece" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

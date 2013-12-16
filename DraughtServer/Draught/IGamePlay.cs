@@ -14,13 +14,13 @@ namespace Draught
     public class Game
     {
         [DataMember]
-        string Name;
+        public string Name;
 
         [DataMember]
-        List<Player> listOfPlayers;
+        public List<Player> listOfPlayers;
 
         [DataMember]
-        List<Piece> listOfPiece;
+        public List<Piece> listOfPiece;
 
 
     }
@@ -30,6 +30,7 @@ namespace Draught
         int xCoordinate;
         int yCoordinate;
         string color;
+        int correspondingBS;
 
         [DataMember]
         public int XCoordinate
@@ -44,11 +45,19 @@ namespace Draught
             get { return yCoordinate; }
             set { yCoordinate = value; }
         }
+        [DataMember]
+        public int CorrespondingBS
+        {
+            get { return correspondingBS; }
+            set { correspondingBS = value; }
+        }
         public string Color
         {
             get { return color; }
             set { color = value; }
         }
+        
+        
     }
 
 
@@ -57,7 +66,7 @@ namespace Draught
     {
       
         [OperationContract]
-        void move(int newX, int newY);
+        void changeLocation(Piece pc,int newX, int newY);
 
         [OperationContract]
         bool sendMessage(string recipient, string message);
@@ -70,6 +79,11 @@ namespace Draught
 
         [OperationContract]
         void quitGame();
+
+        [OperationContract]
+        List<Piece> getPieceList();
+
+
 
     }
     [ServiceContract(Namespace = "Draught")]

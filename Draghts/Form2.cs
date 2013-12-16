@@ -14,18 +14,11 @@ namespace Draghts
     public partial class Form2 : Form 
     {
         private DraughtsServiceReference.PortalClient proxy;
-        private List<int> listOfBoardSquares = new List<int>();
         public Form2()
         {
             InitializeComponent();
             proxy = new DraughtsServiceReference.PortalClient();
 
-            for (int i = 0; i < 64; i++)
-            {
-
-                listOfBoardSquares.Add(i);
-
-            }
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -70,15 +63,7 @@ namespace Draghts
             }
 
         }
-        public int calculateBoardSquareAtPost(Point pt)
-        {
-            int row, column;
-
-            column = pt.X % 50;
-            row = pt.Y % 50;
-
-            return (8 * row) + column;
-        }
+       
        
     }
 }

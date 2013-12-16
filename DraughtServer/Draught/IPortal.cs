@@ -29,13 +29,13 @@ namespace Draught
     public class Player
     {
         [DataMember]
-        string userName;
+        public string userName;
 
         [DataMember]
-        string password;
+        public string password;
 
         [DataMember]
-        bool loggedIn;
+        public bool loggedIn;
 
         [DataMember]
         public IPortalCallBack PortalCallBack { get; set; }
@@ -49,6 +49,7 @@ namespace Draught
     }
     interface IPortalEvents
     {
+        [OperationContract(IsOneWay = true)]
         void OnLoggingInOrOut(List<Player> loggedInList); //this event will be fired when a user logs out. 
 
     }
