@@ -1,6 +1,6 @@
-C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\obj\Debug\Draught.csprojResolveAssemblyReference.cache
 C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\bin\Debug\Draught.dll.config
 C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\bin\Debug\Draught.dll
 C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\bin\Debug\Draught.pdb
 C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\obj\Debug\Draught.dll
 C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\obj\Debug\Draught.pdb
+C:\Users\Koech\Desktop\draughts-game\DraughtServer\Draught\obj\Debug\Draught.csprojResolveAssemblyReference.cache

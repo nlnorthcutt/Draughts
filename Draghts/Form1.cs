@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ServiceModel;
+
 
 namespace Draghts
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form 
     {
-        private DraughtsServiceReference.GamePlayClient proxy;
+        //private DraughtsServiceReference.GamePlayClient proxy;
+        //private DraughtsServiceReference.PortalClient proxy2;
         bool gameStarted = true;
         private List<int> listOfBoardSquares = new List<int>();
         private DraughtsServiceReference.Piece[] pieces;
+        private DraughtsServiceReference.Player[] plyrs;
         private List<PictureBox>listOfPBs=new List<PictureBox>();
         public bool pieceSelected = false;
         int selectedBoardSquare;
@@ -23,10 +27,14 @@ namespace Draghts
         private DraughtsServiceReference.Piece selectedPiece;
         public Form1()
         {
+            Proxy.loddy = this;
             InitializeComponent();
-            proxy = new DraughtsServiceReference.GamePlayClient();
+            //proxy = new DraughtsServiceReference.GamePlayClient(new InstanceContext(this));
+            //proxy2 = new DraughtsServiceReference.PortalClient(new InstanceContext(this));
+            //proxy2.Subscribe();
 
-            pieces = proxy.getPieceList();
+            
+            pieces = PortalProxy.proxy.getPieceList();
             for (int i = 0; i < 64; i++)
             {
 
@@ -44,7 +52,7 @@ namespace Draghts
             for (int j = 41; j < 63; j = j + 2)
             {
 
-
+               
                 listOfBoardSquares[j] = 1;
 
             }
@@ -73,7 +81,18 @@ namespace Draghts
             listOfPBs.Add(pictureBox23);
             listOfPBs.Add(pictureBox25);
             listOfPBs.Add(pictureBox26);
+            //onlineUsers.Add("Users Online");
         }
+        //public void OnLoggingInOrOut1(DraughtsServiceReference.Player[] players)
+        //{
+        //    lbOnlineList.Items.Clear();
+        //    foreach (DraughtsServiceReference.Player pl in players)
+        //    {
+        //        lbOnlineList.Items.Add(pl.userName);
+        //    }
+
+        //}
+
 
         private void pictureBox26_Click(object sender, EventArgs e)
         {
@@ -102,7 +121,7 @@ namespace Draghts
                     if (newPost.X != -1 && newPost.Y != -1)
                     {
                         pbSelected.Location = newPost;
-                        proxy.changeLocation(selectedPiece, newPost.X, newPost.Y);
+                        PortalProxy.proxy.changeLocation(selectedPiece, newPost.X, newPost.Y);
                     }
                     else
                         MessageBox.Show("Do not move to white space!");
@@ -241,6 +260,27 @@ namespace Draghts
         private void pictureBox4_MouseClick(object sender, MouseEventArgs e)
         {
             determinePieceSelected(11, 2);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            plyrs=Proxy.proxy.GetlistOfPlayers();
+
+            for (int i = 0; i < plyrs.Length-1;i++)
+            {
+                if (plyrs.Length==1)
+                {
+                    lbOnlineList.Items.Add("Empty");
+                }
+                else
+                lbOnlineList.Items.Add(plyrs[i].userName);
+            }
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

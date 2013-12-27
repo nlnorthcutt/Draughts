@@ -15,6 +15,102 @@ namespace Draghts.DraughtsServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/Draught")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Draghts.DraughtsServiceReference.Player[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Draghts.DraughtsServiceReference.Piece))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Draghts.DraughtsServiceReference.Piece[]))]
+    public partial class Player : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object PortalCallBackField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool loggedInField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string userNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object PortalCallBack {
+            get {
+                return this.PortalCallBackField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PortalCallBackField, value) != true)) {
+                    this.PortalCallBackField = value;
+                    this.RaisePropertyChanged("PortalCallBack");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool loggedIn {
+            get {
+                return this.loggedInField;
+            }
+            set {
+                if ((this.loggedInField.Equals(value) != true)) {
+                    this.loggedInField = value;
+                    this.RaisePropertyChanged("loggedIn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string userName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userNameField, value) != true)) {
+                    this.userNameField = value;
+                    this.RaisePropertyChanged("userName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Piece", Namespace="http://schemas.datacontract.org/2004/07/Draught")]
     [System.SerializableAttribute()]
     public partial class Piece : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -91,7 +187,7 @@ namespace Draghts.DraughtsServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="Draught", ConfigurationName="DraughtsServiceReference.IPortal")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="Draught", ConfigurationName="DraughtsServiceReference.IPortal", CallbackContract=typeof(Draghts.DraughtsServiceReference.IPortalCallback))]
     public interface IPortal {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/signUp", ReplyAction="Draught/IPortal/signUpResponse")]
@@ -117,6 +213,25 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/logOut", ReplyAction="Draught/IPortal/logOutResponse")]
         System.Threading.Tasks.Task logOutAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/Subscribe", ReplyAction="Draught/IPortal/SubscribeResponse")]
+        void Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/Subscribe", ReplyAction="Draught/IPortal/SubscribeResponse")]
+        System.Threading.Tasks.Task SubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/GetlistOfPlayers", ReplyAction="Draught/IPortal/GetlistOfPlayersResponse")]
+        Draghts.DraughtsServiceReference.Player[] GetlistOfPlayers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/GetlistOfPlayers", ReplyAction="Draught/IPortal/GetlistOfPlayersResponse")]
+        System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Player[]> GetlistOfPlayersAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IPortalCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/OnLoggingInOrOut1", ReplyAction="Draught/IPortal/OnLoggingInOrOut1Response")]
+        void OnLoggingInOrOut1(Draghts.DraughtsServiceReference.Player[] loggedInList);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,25 +240,26 @@ namespace Draghts.DraughtsServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PortalClient : System.ServiceModel.ClientBase<Draghts.DraughtsServiceReference.IPortal>, Draghts.DraughtsServiceReference.IPortal {
+    public partial class PortalClient : System.ServiceModel.DuplexClientBase<Draghts.DraughtsServiceReference.IPortal>, Draghts.DraughtsServiceReference.IPortal {
         
-        public PortalClient() {
+        public PortalClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public PortalClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public PortalClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public PortalClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public PortalClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public PortalClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public PortalClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public PortalClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public PortalClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public bool signUp(string userName, string password) {
@@ -177,6 +293,22 @@ namespace Draghts.DraughtsServiceReference {
         public System.Threading.Tasks.Task logOutAsync() {
             return base.Channel.logOutAsync();
         }
+        
+        public void Subscribe() {
+            base.Channel.Subscribe();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeAsync() {
+            return base.Channel.SubscribeAsync();
+        }
+        
+        public Draghts.DraughtsServiceReference.Player[] GetlistOfPlayers() {
+            return base.Channel.GetlistOfPlayers();
+        }
+        
+        public System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Player[]> GetlistOfPlayersAsync() {
+            return base.Channel.GetlistOfPlayersAsync();
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -200,12 +332,6 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
         System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, int x, int y);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/Subscribe", ReplyAction="Draught/IGamePlay/SubscribeResponse")]
-        void Subscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/Subscribe", ReplyAction="Draught/IGamePlay/SubscribeResponse")]
-        System.Threading.Tasks.Task SubscribeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/quitGame", ReplyAction="Draught/IGamePlay/quitGameResponse")]
         void quitGame();
@@ -269,14 +395,6 @@ namespace Draghts.DraughtsServiceReference {
         
         public System.Threading.Tasks.Task<bool> makeMoveAsync(Draghts.DraughtsServiceReference.Piece piece, int x, int y) {
             return base.Channel.makeMoveAsync(piece, x, y);
-        }
-        
-        public void Subscribe() {
-            base.Channel.Subscribe();
-        }
-        
-        public System.Threading.Tasks.Task SubscribeAsync() {
-            return base.Channel.SubscribeAsync();
         }
         
         public void quitGame() {

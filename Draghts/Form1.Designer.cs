@@ -61,9 +61,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbOnlineList = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -436,24 +437,6 @@
             this.btnSignOut.Text = "Sign out";
             this.btnSignOut.UseVisualStyleBackColor = true;
             // 
-            // textBox3
-            // 
-            this.textBox3.AutoCompleteCustomSource.AddRange(new string[] {
-            "Bob",
-            "Bex",
-            "Cory",
-            "Amy",
-            "Katy"});
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Font = new System.Drawing.Font("Monotype Corsiva", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.textBox3.Location = new System.Drawing.Point(30, 35);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 310);
-            this.textBox3.TabIndex = 35;
-            this.textBox3.Text = "Nathan\r\nBen \r\nKaty\r\nAmy\r\n";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -474,15 +457,38 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "label3";
             // 
+            // lbOnlineList
+            // 
+            this.lbOnlineList.FormattingEnabled = true;
+            this.lbOnlineList.Location = new System.Drawing.Point(30, 40);
+            this.lbOnlineList.Name = "lbOnlineList";
+            this.lbOnlineList.Size = new System.Drawing.Size(134, 264);
+            this.lbOnlineList.TabIndex = 38;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.button1.Image = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
+            this.button1.Location = new System.Drawing.Point(897, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 24);
+            this.button1.TabIndex = 39;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
             this.ClientSize = new System.Drawing.Size(948, 504);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbOnlineList);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSave);
@@ -518,6 +524,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Draughts";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -583,9 +590,10 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSignOut;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ListBox lbOnlineList;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -9,22 +9,6 @@ using System.Text;
 namespace Draught
 {
 
-    [ServiceContract(Namespace = "Draught", CallbackContract = typeof(IPortalCallBack))]
-    public interface IPortal
-    {
-        [OperationContract]
-        bool signUp(string userName, string password);
-
-        [OperationContract]
-        bool logIn(string userName, string password);
-
-        [OperationContract]
-        bool Invite(string recipient);
-
-        [OperationContract]
-        void logOut();
-
-    }
     [DataContract]
     public class Player
     {
@@ -41,16 +25,43 @@ namespace Draught
         public IPortalCallBack PortalCallBack { get; set; }
 
     }
+    [ServiceContract(Namespace = "Draught", CallbackContract = typeof(IPortalCallBack))]
+    public interface IPortal
+    {
+        [OperationContract]
+        bool signUp(string userName, string password);
 
-    
+        [OperationContract]
+        bool logIn(string userName, string password);
+
+        [OperationContract]
+        bool Invite(string recipient);
+
+        [OperationContract]
+        void logOut();
+
+        [OperationContract]
+        void Subscribe();
+
+       [OperationContract]
+       List<Player> GetlistOfPlayers();
+
+    }
+
+
+
     public interface IPortalCallBack
     {
-        void OnInvitation(string sender, string recipient); //To inform a user when an invitaion from another player has been recieved
+        //void OnInvitation(string sender, string recipient); //To inform a user when an invitation from another player has been recieved
+
+        [OperationContract]
+        void OnLoggingInOrOut1(List<Player> loggedInList); //this event will be fired when a user logs in or out,to update the list of the logged in users. 
     }
+    //[ServiceContract(Namespace="Draught")]
     interface IPortalEvents
     {
         [OperationContract(IsOneWay = true)]
-        void OnLoggingInOrOut(List<Player> loggedInList); //this event will be fired when a user logs out. 
+        void OnLoggingInOrOut(List<Player> loggedInList); //this event will be fired when a user logs in or out,to update the list of the logged in users. 
 
     }
 

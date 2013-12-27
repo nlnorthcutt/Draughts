@@ -9,24 +9,47 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 
+
 namespace Draghts
 {
-    public partial class Form2 : Form 
+    public partial class Form2 : Form
     {
-        private DraughtsServiceReference.PortalClient proxy;
+       
+       
+        //private DraughtsServiceReference.PortalClient proxy;
         public Form2()
         {
+            Proxy.login = this;
             InitializeComponent();
-            proxy = new DraughtsServiceReference.PortalClient();
+            //PortalProxy.proxy = new DraughtsServiceReference.PortalClient();
+            //proxy.Subscribe();
 
         }
+        //public void OnLoggingInOrOut(DraughtsServiceReference.Player[] players)
+        //{
+        //    string name;
+        //    foreach (DraughtsServiceReference.Player pl in players)
+        //    {
+        //        name = pl.userName;
+        //    }
 
+        //}
+
+        //public void OnLoggingInOrOut1(DraughtsServiceReference.Player[] players)
+        //{
+        //    string name;
+        //    foreach (DraughtsServiceReference.Player pl in players)
+        //    {
+        //        lbOnlineList.Items.Add(pl.userName);
+        //    }
+
+        //}
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             bool result;
             if (tbSignUpPW.Text == tbConfirmPW.Text)
             {
-                result = proxy.signUp(tbUser.Text, tbPass.Text);
+                result = Proxy.proxy.signUp(tbUser.Text, tbPass.Text);
 
                 if (result == true)
                 {
@@ -51,11 +74,14 @@ namespace Draghts
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             bool result=false;
-            result = proxy.logIn(tbUser.Text,tbPass.Text);
+
+            result = Proxy.proxy.logIn(tbUser.Text, tbPass.Text);
             if (result)
             {
                 Form1 gameForm = new Form1();
                 gameForm.Show();
+                
+                //proxy.Subscribe();
             }
             else
             {
@@ -63,7 +89,15 @@ namespace Draghts
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
        
        
     }
+
+
+   
 }

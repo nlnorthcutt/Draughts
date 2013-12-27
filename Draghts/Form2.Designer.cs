@@ -43,6 +43,7 @@
             this.lbWarning = new System.Windows.Forms.Label();
             this.lbWarning2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -214,12 +215,29 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Sign Up Here";
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Old English Text MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.button1.Location = new System.Drawing.Point(576, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 22);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
             this.ClientSize = new System.Drawing.Size(631, 402);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lbWarning2);
             this.Controls.Add(this.lbWarning);
@@ -260,5 +278,6 @@
         private System.Windows.Forms.Label lbWarning;
         private System.Windows.Forms.Label lbWarning2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -31,6 +31,24 @@
   <wsdl:message name="IPortal_logOut_OutputMessage">
     <wsdl:part name="parameters" element="tns:logOutResponse" />
   </wsdl:message>
+  <wsdl:message name="IPortal_Subscribe_InputMessage">
+    <wsdl:part name="parameters" element="tns:Subscribe" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_Subscribe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_GetlistOfPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistOfPlayers" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_GetlistOfPlayers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistOfPlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_OnLoggingInOrOut1_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLoggingInOrOut1" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_OnLoggingInOrOut1_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLoggingInOrOut1Response" />
+  </wsdl:message>
   <wsdl:message name="IGamePlay_changeLocation_InputMessage">
     <wsdl:part name="parameters" element="tns:changeLocation" />
   </wsdl:message>
@@ -48,12 +66,6 @@
   </wsdl:message>
   <wsdl:message name="IGamePlay_makeMove_OutputMessage">
     <wsdl:part name="parameters" element="tns:makeMoveResponse" />
-  </wsdl:message>
-  <wsdl:message name="IGamePlay_Subscribe_InputMessage">
-    <wsdl:part name="parameters" element="tns:Subscribe" />
-  </wsdl:message>
-  <wsdl:message name="IGamePlay_Subscribe_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribeResponse" />
   </wsdl:message>
   <wsdl:message name="IGamePlay_quitGame_InputMessage">
     <wsdl:part name="parameters" element="tns:quitGame" />
@@ -84,6 +96,18 @@
       <wsdl:input wsaw:Action="Draught/IPortal/logOut" message="tns:IPortal_logOut_InputMessage" />
       <wsdl:output wsaw:Action="Draught/IPortal/logOutResponse" message="tns:IPortal_logOut_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <wsdl:input wsaw:Action="Draught/IPortal/Subscribe" message="tns:IPortal_Subscribe_InputMessage" />
+      <wsdl:output wsaw:Action="Draught/IPortal/SubscribeResponse" message="tns:IPortal_Subscribe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetlistOfPlayers">
+      <wsdl:input wsaw:Action="Draught/IPortal/GetlistOfPlayers" message="tns:IPortal_GetlistOfPlayers_InputMessage" />
+      <wsdl:output wsaw:Action="Draught/IPortal/GetlistOfPlayersResponse" message="tns:IPortal_GetlistOfPlayers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLoggingInOrOut1">
+      <wsdl:output wsaw:Action="Draught/IPortal/OnLoggingInOrOut1" message="tns:IPortal_OnLoggingInOrOut1_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="Draught/IPortal/OnLoggingInOrOut1Response" message="tns:IPortal_OnLoggingInOrOut1_InputCallbackMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGamePlay">
     <wsdl:operation name="changeLocation">
@@ -97,10 +121,6 @@
     <wsdl:operation name="makeMove">
       <wsdl:input wsaw:Action="Draught/IGamePlay/makeMove" message="tns:IGamePlay_makeMove_InputMessage" />
       <wsdl:output wsaw:Action="Draught/IGamePlay/makeMoveResponse" message="tns:IGamePlay_makeMove_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Subscribe">
-      <wsdl:input wsaw:Action="Draught/IGamePlay/Subscribe" message="tns:IGamePlay_Subscribe_InputMessage" />
-      <wsdl:output wsaw:Action="Draught/IGamePlay/SubscribeResponse" message="tns:IGamePlay_Subscribe_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="quitGame">
       <wsdl:input wsaw:Action="Draught/IGamePlay/quitGame" message="tns:IGamePlay_quitGame_InputMessage" />

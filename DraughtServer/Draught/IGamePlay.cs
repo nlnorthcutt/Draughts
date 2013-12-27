@@ -23,6 +23,7 @@ namespace Draught
         public List<Piece> listOfPiece;
 
 
+
     }
     [DataContract]
     public class Piece
@@ -61,7 +62,7 @@ namespace Draught
     }
 
 
-    [ServiceContract(Namespace = "Draught", CallbackContract = typeof(IGamePlayCallback))]
+    [ServiceContract(Namespace = "Draught")]
     interface IGamePlay
     {
       
@@ -75,9 +76,6 @@ namespace Draught
         bool makeMove(Piece piece, int x,int y);
 
         [OperationContract]
-        void Subscribe();
-
-        [OperationContract]
         void quitGame();
 
         [OperationContract]
@@ -86,18 +84,20 @@ namespace Draught
 
 
     }
-    [ServiceContract(Namespace = "Draught")]
-    interface IGamePlayEvents
-    {
-        void OnLoggingInOrOut(List<Player> loggedInList); //this event will be fired when a user logs out. 
+    //[ServiceContract(Namespace = "Draught")]
+    //interface IGamePlayEvents
+    //{
+    //    void OnLoggingInOrOut(List<Player> loggedInList); //this event will be fired when a user logs out. 
 
-    }
-
-    public interface IGamePlayCallback
-    {
-        void OnInvitation(string sender, string recipient); //To inform a user when an invitaion from another player has been recieved
-        void Playerturn(string userName); //To inform the player that it is his/her turn to play
-        void messageRecieved(string sender, string message); //To inform a user when a message from the other player has been recieved
-        void gameInterupted(); //To inform a player when the game has been interrupted by the other player
-    }
+    //}
+    //[ServiceContract (Namespace= "Draught")]
+    //public interface IGamePlayCallback
+    //{
+    //    [OperationContract]
+    //    void OnLoggingInOrOut1(List<Player> loggedInList);
+    //    //void OnInvitation(string sender, string recipient); //To inform a user when an invitaion from another player has been recieved
+    //    //void Playerturn(string userName); //To inform the player that it is his/her turn to play
+    //    //void messageRecieved(string sender, string message); //To inform a user when a message from the other player has been recieved
+    //    //void gameInterupted(); //To inform a player when the game has been interrupted by the other player
+    //}
 }

@@ -8,19 +8,15 @@ using System.Data.OleDb;
 
 namespace Draught
 {
-
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Service1 : IPortal,IGamePlay
     {
+
+        static Action<List<Player>> m_Event = delegate { };
         List<Game> games=new List<Game>();
         Game game = new Game();
         List<Player> users=new List<Player>();
-        Player user = new Player();
 
-        static Action m_Event = delegate {};
-        
-        
-       
-        
         List<Piece> listOfPieces = new List<Piece>();
 
         Piece p1 = new Piece();
@@ -267,17 +263,18 @@ namespace Draught
                 connect.Close();
                 if (result == password)
                 {
-
+                    Player user = new Player();
                     user.userName = userName;
                     user.password = password;
                     user.loggedIn = true;
+                    user.PortalCallBack = OperationContext.Current.GetCallbackChannel<IPortalCallBack>();
                     users.Add(user);
-                    
-                    game.listOfPiece = listOfPieces;
-                    game.listOfPlayers = users;
-                    games.Add(game);
+                    updateList();
+                    //fireEvent();
                     return true;
-
+                    //game.listOfPiece = listOfPieces;
+                    //game.listOfPlayers = users;
+                    //games.Add(game);
                 }
                 else
                 {
@@ -292,6 +289,15 @@ namespace Draught
                 
             }
  
+        }
+
+        private void updateList()
+        {
+            for (int i = 0; i < users.Count -2; i++)
+			{
+			 users[i].PortalCallBack.OnLoggingInOrOut1(users);
+			}
+            
         }
 
     /************************************************************************************************/
@@ -342,13 +348,7 @@ namespace Draught
         {
             return true;
         }
-        /// <summary>
-        /// This methods will be used to subscribe to the events
-        /// </summary>
-        public void Subscribe()
-        {
-
-        }
+      
 
     /*************************************************************************************************/
         /// <summary>
@@ -369,10 +369,19 @@ namespace Draught
         {
             return true;
         }
-        public void OnLoggingInOrOut(List<Player> loggedInList)
+        public void Subscribe()
         {
-            //IPortalEvents user = OperationContext.Current.GetCallbackChannel<IPortalEvents>();
-            //m_Event += user.OnLoggingInOrOut;
+            IPortalEvents player = OperationContext.Current.GetCallbackChannel<IPortalEvents>();
+            m_Event += player.OnLoggingInOrOut;
+        }
+        public void fireEvent()
+        {
+            m_Event(users);
+        }
+
+        public List<Player> GetlistOfPlayers()
+        {
+            return users;
         }
     }
 }
