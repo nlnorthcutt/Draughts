@@ -34,6 +34,7 @@
   <xs:element name="Invite">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="sender" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="recipient" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>

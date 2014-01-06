@@ -13,9 +13,7 @@ using System.ServiceModel;
 namespace Draghts
 {
     public partial class Form2 : Form
-    {
-       
-       
+    {  
         //private DraughtsServiceReference.PortalClient proxy;
         public Form2()
         {
@@ -80,7 +78,8 @@ namespace Draghts
             {
                 Form1 gameForm = new Form1();
                 gameForm.Show();
-                
+                Proxy.myUsername = tbUser.Text;
+      
                 //proxy.Subscribe();
             }
             else

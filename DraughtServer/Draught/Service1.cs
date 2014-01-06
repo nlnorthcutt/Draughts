@@ -16,8 +16,9 @@ namespace Draught
         List<Game> games=new List<Game>();
         Game game = new Game();
         List<Player> users=new List<Player>();
-
+        Player invitedPlayer;
         List<Piece> listOfPieces = new List<Piece>();
+        Player invitee;
 
         Piece p1 = new Piece();
         Piece p2 = new Piece();
@@ -293,7 +294,7 @@ namespace Draught
 
         private void updateList()
         {
-            for (int i = 0; i < users.Count -2; i++)
+            for (int i = 1; i < users.Count; i++)
 			{
 			 users[i].PortalCallBack.OnLoggingInOrOut1(users);
 			}
@@ -306,9 +307,19 @@ namespace Draught
         /// </summary>
         /// <param name="recipient">The player to be invited</param>
         /// <returns>Returns true if the invitation was successfully sent and false otherwise </returns>
-        public bool Invite(string recipient)
+        public bool Invite(string sender,string recipient)
         {
-            return true;
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].userName == recipient)
+                {
+                    invitedPlayer = users[i];
+                    invitee.userName = sender;
+
+                }
+            }
+                return true;
         }
 
     /*****************************************************************************************************/
@@ -333,9 +344,10 @@ namespace Draught
         }
 
      /****************************************************************************************************/
-   
-
-
+        public void inviteSelectedPlayer()
+        {
+            invitedPlayer.PortalCallBack.OnInvitation(invitee.userName,invitedPlayer);
+        }
 
      /****************************************************************************************************/
         /// <summary>

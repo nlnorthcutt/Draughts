@@ -282,5 +282,23 @@ namespace Draghts
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (lbOnlineList.SelectedItem != null)
+            {
+                Proxy.proxy.Invite(Proxy.myUsername,Convert.ToString(lbOnlineList.SelectedItem));
+            }
+            else
+                MessageBox.Show("Please select a user first");
+        }
+        public void loadGame()
+        {
+            for (int i = 0; i < listOfPBs.Count; i++)
+            {
+                listOfPBs[i].Visible = true;
+            }
+
+        }
     }
 }

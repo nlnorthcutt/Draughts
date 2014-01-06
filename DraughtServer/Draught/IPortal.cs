@@ -35,7 +35,7 @@ namespace Draught
         bool logIn(string userName, string password);
 
         [OperationContract]
-        bool Invite(string recipient);
+        bool Invite(string sender,string recipient);
 
         [OperationContract]
         void logOut();
@@ -52,7 +52,7 @@ namespace Draught
 
     public interface IPortalCallBack
     {
-        //void OnInvitation(string sender, string recipient); //To inform a user when an invitation from another player has been recieved
+        void OnInvitation(string sender, Player recipient); //To inform a user when an invitation from another player has been recieved
 
         [OperationContract]
         void OnLoggingInOrOut1(List<Player> loggedInList); //this event will be fired when a user logs in or out,to update the list of the logged in users. 
