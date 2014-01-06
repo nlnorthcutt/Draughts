@@ -294,7 +294,7 @@ namespace Draught
 
         private void updateList()
         {
-            for (int i = 1; i < users.Count; i++)
+            for (int i = 0; i < users.Count-1; i++)
 			{
 			 users[i].PortalCallBack.OnLoggingInOrOut1(users);
 			}
