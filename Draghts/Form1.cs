@@ -20,7 +20,7 @@ namespace Draghts
         private List<int> listOfBoardSquares = new List<int>();
         private DraughtsServiceReference.Piece[] pieces;
         private DraughtsServiceReference.Player[] plyrs;
-        private List<PictureBox>listOfPBs=new List<PictureBox>();
+        public List<PictureBox>listOfPBs=new List<PictureBox>();
         public bool pieceSelected = false;
         int selectedBoardSquare;
         PictureBox pbSelected;
@@ -287,17 +287,24 @@ namespace Draghts
         {
             if (lbOnlineList.SelectedItem != null)
             {
-                Proxy.proxy.Invite(Proxy.myUsername,Convert.ToString(lbOnlineList.SelectedItem));
+                if (Proxy.proxy.Invite(Proxy.myUsername, Convert.ToString(lbOnlineList.SelectedItem)))
+                {
+                    for (int i = 0; i < listOfPBs.Count; i++)
+                    {
+
+                        listOfPBs[i].Visible = true;
+
+
+                    }
+                }
             }
             else
                 MessageBox.Show("Please select a user first");
         }
-        public void loadGame()
+      
+
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listOfPBs.Count; i++)
-            {
-                listOfPBs[i].Visible = true;
-            }
 
         }
     }

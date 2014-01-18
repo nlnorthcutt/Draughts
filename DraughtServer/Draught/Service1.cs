@@ -8,7 +8,7 @@ using System.Data.OleDb;
 
 namespace Draught
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode=ConcurrencyMode.Multiple)]
     public class Service1 : IPortal,IGamePlay
     {
 
@@ -18,7 +18,7 @@ namespace Draught
         List<Player> users=new List<Player>();
         Player invitedPlayer;
         List<Piece> listOfPieces = new List<Piece>();
-        Player invitee;
+        Player invitee=new Player();
 
         Piece p1 = new Piece();
         Piece p2 = new Piece();
@@ -294,10 +294,22 @@ namespace Draught
 
         private void updateList()
         {
-            for (int i = 0; i < users.Count-1; i++)
-			{
-			 users[i].PortalCallBack.OnLoggingInOrOut1(users);
-			}
+  
+                for (int i = 0; i < users.Count-1; i++)
+                {
+                    List<Player> tempPlayers = new List<Player>();
+                    tempPlayers.AddRange(users);
+                    // create a new users list
+                    
+                    // copy all users to it, except for users[i]
+
+                    tempPlayers.RemoveAt(i);
+                    if (tempPlayers.Count > 0)
+                    {
+                       users[i].PortalCallBack.OnLoggingInOrOut1(tempPlayers); 
+                    }
+                    
+                }
             
         }
 
@@ -316,10 +328,11 @@ namespace Draught
                 {
                     invitedPlayer = users[i];
                     invitee.userName = sender;
+                    return inviteSelectedPlayer();
 
                 }
             }
-                return true;
+                return false ;
         }
 
     /*****************************************************************************************************/
@@ -344,9 +357,13 @@ namespace Draught
         }
 
      /****************************************************************************************************/
-        public void inviteSelectedPlayer()
+        public bool inviteSelectedPlayer()
         {
-            invitedPlayer.PortalCallBack.OnInvitation(invitee.userName,invitedPlayer);
+            bool accepted = true;
+            accepted=invitedPlayer.PortalCallBack.OnInvitation(invitee.userName,invitedPlayer);
+            setOpponent(invitee.userName);
+            return accepted;
+
         }
 
      /****************************************************************************************************/
@@ -395,5 +412,18 @@ namespace Draught
         {
             return users;
         }
+        public void setOpponent(string userName)
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].userName == userName)
+                {
+                    invitedPlayer.opponent = users[i];
+                    //users[i].PortalCallBack.loadGame();
+                }
+            }
+    
+        }
+
     }
 }

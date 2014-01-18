@@ -22,6 +22,9 @@ namespace Draught
         public bool loggedIn;
 
         [DataMember]
+        public Player opponent;
+
+        [DataMember]
         public IPortalCallBack PortalCallBack { get; set; }
 
     }
@@ -46,16 +49,23 @@ namespace Draught
        [OperationContract]
        List<Player> GetlistOfPlayers();
 
+       [OperationContract]
+        void setOpponent(string userName);
+
     }
 
 
 
     public interface IPortalCallBack
     {
-        void OnInvitation(string sender, Player recipient); //To inform a user when an invitation from another player has been recieved
+        [OperationContract]
+        bool OnInvitation(string sender, Player recipient); //To inform a user when an invitation from another player has been recieved
 
         [OperationContract]
         void OnLoggingInOrOut1(List<Player> loggedInList); //this event will be fired when a user logs in or out,to update the list of the logged in users. 
+
+        [OperationContract]
+        void loadGame();
     }
     //[ServiceContract(Namespace="Draught")]
     interface IPortalEvents

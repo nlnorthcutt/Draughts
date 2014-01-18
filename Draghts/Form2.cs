@@ -76,10 +76,11 @@ namespace Draghts
             result = Proxy.proxy.logIn(tbUser.Text, tbPass.Text);
             if (result)
             {
+
                 Form1 gameForm = new Form1();
                 gameForm.Show();
                 Proxy.myUsername = tbUser.Text;
-      
+    
                 //proxy.Subscribe();
             }
             else

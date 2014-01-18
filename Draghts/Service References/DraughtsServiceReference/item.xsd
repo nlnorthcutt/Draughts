@@ -10,6 +10,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="PortalCallBack" nillable="true" type="xs:anyType" />
       <xs:element minOccurs="0" name="loggedIn" type="xs:boolean" />
+      <xs:element minOccurs="0" name="opponent" nillable="true" type="tns:Player" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
     </xs:sequence>

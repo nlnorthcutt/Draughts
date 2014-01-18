@@ -32,6 +32,9 @@ namespace Draghts.DraughtsServiceReference {
         private bool loggedInField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Draghts.DraughtsServiceReference.Player opponentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string passwordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -69,6 +72,19 @@ namespace Draghts.DraughtsServiceReference {
                 if ((this.loggedInField.Equals(value) != true)) {
                     this.loggedInField = value;
                     this.RaisePropertyChanged("loggedIn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Draghts.DraughtsServiceReference.Player opponent {
+            get {
+                return this.opponentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.opponentField, value) != true)) {
+                    this.opponentField = value;
+                    this.RaisePropertyChanged("opponent");
                 }
             }
         }
@@ -225,13 +241,25 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/GetlistOfPlayers", ReplyAction="Draught/IPortal/GetlistOfPlayersResponse")]
         System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Player[]> GetlistOfPlayersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/setOpponent", ReplyAction="Draught/IPortal/setOpponentResponse")]
+        void setOpponent(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/setOpponent", ReplyAction="Draught/IPortal/setOpponentResponse")]
+        System.Threading.Tasks.Task setOpponentAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IPortalCallback {
         
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/OnInvitation", ReplyAction="Draught/IPortal/OnInvitationResponse")]
+        bool OnInvitation(string sender, Draghts.DraughtsServiceReference.Player recipient);
+        
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/OnLoggingInOrOut1", ReplyAction="Draught/IPortal/OnLoggingInOrOut1Response")]
         void OnLoggingInOrOut1(Draghts.DraughtsServiceReference.Player[] loggedInList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/loadGame", ReplyAction="Draught/IPortal/loadGameResponse")]
+        void loadGame();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -308,6 +336,14 @@ namespace Draghts.DraughtsServiceReference {
         
         public System.Threading.Tasks.Task<Draghts.DraughtsServiceReference.Player[]> GetlistOfPlayersAsync() {
             return base.Channel.GetlistOfPlayersAsync();
+        }
+        
+        public void setOpponent(string userName) {
+            base.Channel.setOpponent(userName);
+        }
+        
+        public System.Threading.Tasks.Task setOpponentAsync(string userName) {
+            return base.Channel.setOpponentAsync(userName);
         }
     }
     
