@@ -109,7 +109,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(494, 135);
+            this.pictureBox2.Location = new System.Drawing.Point(492, 135);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(49, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -121,7 +121,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(547, 86);
+            this.pictureBox3.Location = new System.Drawing.Point(540, 86);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(49, 49);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -157,9 +157,9 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(449, 85);
+            this.pictureBox6.Location = new System.Drawing.Point(440, 86);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(47, 50);
+            this.pictureBox6.Size = new System.Drawing.Size(49, 50);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 5;
             this.pictureBox6.TabStop = false;
@@ -260,6 +260,7 @@
             this.pictureBox14.TabIndex = 13;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Visible = false;
+            this.pictureBox14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox14_MouseClick);
             // 
             // pictureBox15
             // 
@@ -271,6 +272,7 @@
             this.pictureBox15.TabIndex = 14;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Visible = false;
+            this.pictureBox15.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox15_MouseClick);
             // 
             // pictureBox16
             // 
@@ -282,6 +284,7 @@
             this.pictureBox16.TabIndex = 15;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Visible = false;
+            this.pictureBox16.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox16_MouseClick);
             // 
             // pictureBox17
             // 
@@ -293,6 +296,7 @@
             this.pictureBox17.TabIndex = 16;
             this.pictureBox17.TabStop = false;
             this.pictureBox17.Visible = false;
+            this.pictureBox17.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox17_MouseClick);
             // 
             // pictureBox18
             // 
@@ -304,6 +308,7 @@
             this.pictureBox18.TabIndex = 17;
             this.pictureBox18.TabStop = false;
             this.pictureBox18.Visible = false;
+            this.pictureBox18.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox18_MouseClick);
             // 
             // pictureBox19
             // 
@@ -315,6 +320,7 @@
             this.pictureBox19.TabIndex = 18;
             this.pictureBox19.TabStop = false;
             this.pictureBox19.Visible = false;
+            this.pictureBox19.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox19_MouseClick);
             // 
             // pictureBox20
             // 
@@ -326,6 +332,7 @@
             this.pictureBox20.TabIndex = 19;
             this.pictureBox20.TabStop = false;
             this.pictureBox20.Visible = false;
+            this.pictureBox20.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox20_MouseClick);
             // 
             // pictureBox21
             // 
@@ -337,6 +344,7 @@
             this.pictureBox21.TabIndex = 20;
             this.pictureBox21.TabStop = false;
             this.pictureBox21.Visible = false;
+            this.pictureBox21.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox21_MouseClick);
             // 
             // pictureBox22
             // 
@@ -348,6 +356,7 @@
             this.pictureBox22.TabIndex = 21;
             this.pictureBox22.TabStop = false;
             this.pictureBox22.Visible = false;
+            this.pictureBox22.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox22_MouseClick);
             // 
             // pictureBox23
             // 
@@ -359,6 +368,7 @@
             this.pictureBox23.TabIndex = 22;
             this.pictureBox23.TabStop = false;
             this.pictureBox23.Visible = false;
+            this.pictureBox23.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox23_MouseClick);
             // 
             // pictureBox25
             // 
@@ -370,6 +380,7 @@
             this.pictureBox25.TabIndex = 24;
             this.pictureBox25.TabStop = false;
             this.pictureBox25.Visible = false;
+            this.pictureBox25.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox25_MouseClick);
             // 
             // pictureBox26
             // 
@@ -382,6 +393,7 @@
             this.pictureBox26.TabStop = false;
             this.pictureBox26.Visible = false;
             this.pictureBox26.Click += new System.EventHandler(this.pictureBox26_Click);
+            this.pictureBox26.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox26_MouseClick);
             // 
             // textBox1
             // 

@@ -16,7 +16,7 @@ namespace Draught
         List<Game> games=new List<Game>();
         Game game = new Game();
         List<Player> users=new List<Player>();
-        Player invitedPlayer;
+        Player invitedPlayer=new Player();
         //List<Piece> listOfPieces = new List<Piece>();
         Player invitee=new Player();
 
@@ -193,7 +193,7 @@ namespace Draught
             //p24.CorrespondingBS = 63;
             //listOfPieces.Add(p24);
 
-            game.Name = "Game1";
+        
 
         }
 
@@ -361,7 +361,26 @@ namespace Draught
         {
             bool accepted = true;
             accepted=invitedPlayer.PortalCallBack.OnInvitation(invitee.userName,invitedPlayer);
-            setOpponent(invitee.userName);
+            if (accepted)
+            {
+                Game newGame = new Game();
+         
+                newGame.player1=invitedPlayer;
+
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (users[i].userName == invitee.userName)
+                    {
+                        newGame.player2 = users[i];
+
+                    }
+
+                }
+
+               
+                games.Add(newGame);
+                
+            }
             return accepted;
 
         }
@@ -373,9 +392,22 @@ namespace Draught
         /// <param name="piece">The piece to be moved</param>
         /// <param name="boardSquare">The square on the board that the piece will be moved to</param>
         /// <returns>True if successful and false otherwise</returns>
-        public bool makeMove(int xPos,int yPos)
+        public void makeMove(int pbIndex,string id,int xPos,int yPos)
         {
-            return true;
+            for (int i = 0; i < games.Count; i++)
+            { 
+                if (games[i].player1.userName == id)
+                {
+                    games[i].player2.PortalCallBack.updateChanges(pbIndex, xPos, yPos);
+                }
+                else if (games[i].player2.userName == id)
+                {
+                    games[i].player1.PortalCallBack.updateChanges(pbIndex, xPos, yPos);
+                }
+
+          
+            }
+          
         }
       
 

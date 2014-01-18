@@ -17,13 +17,14 @@ namespace Draghts
         //private DraughtsServiceReference.GamePlayClient proxy;
         //private DraughtsServiceReference.PortalClient proxy2;
         bool gameStarted = true;
-        private List<int> listOfBoardSquares = new List<int>();
+        public List<int> listOfBoardSquares = new List<int>();
 
         private DraughtsServiceReference.Player[] plyrs;
         public List<PictureBox>listOfPBs=new List<PictureBox>();
         public bool pieceSelected = false;
         int selectedBoardSquare;
         PictureBox pbSelected;
+        public int pbIndex;
  
         public Form1()
         {
@@ -40,20 +41,40 @@ namespace Draghts
                 listOfBoardSquares[i] = 0;
 
             }
-            for (int j = 1; j < 24; j=j+2)
-            {
+           
 
                 
-                listOfBoardSquares[j] = 1;
+                listOfBoardSquares[0] = 5;
+                listOfBoardSquares[2] = 6;
+                listOfBoardSquares[4] = 7;
+                listOfBoardSquares[6] = 10;
+                listOfBoardSquares[8] = 3;
+                listOfBoardSquares[10] = 9;
+                listOfBoardSquares[12] = 4;
+                listOfBoardSquares[14] = 1;
+                listOfBoardSquares[16] = 12;
+                listOfBoardSquares[18] = 8;
+                listOfBoardSquares[20] = 0;
+                listOfBoardSquares[22] = 2;
 
-            }
-            for (int j = 41; j < 63; j = j + 2)
-            {
+            
+           
 
                
-                listOfBoardSquares[j] = 1;
+                listOfBoardSquares[41] = 12;
+                listOfBoardSquares[43] = 19;
+                listOfBoardSquares[45] = 23;
+                listOfBoardSquares[47] = 22;
+                listOfBoardSquares[49] = 14;
+                listOfBoardSquares[51] = 16;
+                listOfBoardSquares[53] = 13;
+                listOfBoardSquares[55] = 18;
+                listOfBoardSquares[57] = 15;
+                listOfBoardSquares[59] = 21;
+                listOfBoardSquares[61] = 20;
+                listOfBoardSquares[63] = 17;
 
-            }
+           
             
             listOfPBs.Add(pictureBox2);
             listOfPBs.Add(pictureBox3);
@@ -109,7 +130,15 @@ namespace Draghts
                     if (newPost.X != -1 && newPost.Y != -1)
                     {
                         pbSelected.Location = newPost;
-                        PortalProxy.proxy.makeMove(newPost.X, newPost.Y);
+                        PortalProxy.proxy.makeMove(pbIndex,Proxy.myUsername,newPost.X, newPost.Y);
+                        for (int i = 0; i < listOfBoardSquares.Count; i++)
+                        {
+                            if (listOfBoardSquares[i] == pbIndex)
+                            {
+                                listOfBoardSquares[i] = 0;
+                            }
+                        }
+                            listOfBoardSquares[selectedBoardSquare] = 1;
                     }
                     else
                         MessageBox.Show("Do not move to white space!");
@@ -154,7 +183,7 @@ namespace Draghts
         }
         public void determinePieceSelected(int pbNumber)
         {
-            
+            pbIndex = pbNumber;
             pbSelected = listOfPBs[pbNumber];
         }
 
@@ -262,6 +291,66 @@ namespace Draghts
         private void btnSend_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox14_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(12);
+        }
+
+        private void pictureBox21_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(19);
+        }
+
+        private void pictureBox26_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(23);
+        }
+
+        private void pictureBox25_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(22);
+        }
+
+        private void pictureBox16_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(14);
+        }
+
+        private void pictureBox18_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(16);
+        }
+
+        private void pictureBox15_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(13);
+        }
+
+        private void pictureBox20_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(18);
+        }
+
+        private void pictureBox17_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(15);
+        }
+
+        private void pictureBox23_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(21);
+        }
+
+        private void pictureBox22_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(20);
+        }
+
+        private void pictureBox19_MouseClick(object sender, MouseEventArgs e)
+        {
+            determinePieceSelected(17);
         }
     }
 }

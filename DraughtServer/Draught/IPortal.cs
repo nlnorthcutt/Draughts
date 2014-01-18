@@ -66,6 +66,9 @@ namespace Draught
 
         [OperationContract]
         void loadGame();
+
+        [OperationContract]
+        void updateChanges(int pbIndex,int x,int y);
     }
     //[ServiceContract(Namespace="Draught")]
     interface IPortalEvents

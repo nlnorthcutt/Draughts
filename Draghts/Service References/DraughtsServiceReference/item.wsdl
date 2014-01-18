@@ -67,6 +67,12 @@
   <wsdl:message name="IPortal_loadGame_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:loadGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IPortal_updateChanges_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:updateChanges" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_updateChanges_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:updateChangesResponse" />
+  </wsdl:message>
   <wsdl:message name="IGamePlay_sendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:sendMessage" />
   </wsdl:message>
@@ -125,6 +131,10 @@
     <wsdl:operation name="loadGame">
       <wsdl:output wsaw:Action="Draught/IPortal/loadGame" message="tns:IPortal_loadGame_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="Draught/IPortal/loadGameResponse" message="tns:IPortal_loadGame_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateChanges">
+      <wsdl:output wsaw:Action="Draught/IPortal/updateChanges" message="tns:IPortal_updateChanges_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="Draught/IPortal/updateChangesResponse" message="tns:IPortal_updateChanges_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGamePlay">

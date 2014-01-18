@@ -10,57 +10,19 @@ using System.Drawing;
 
 namespace Draught
 {
+    
     [DataContract]
     public class Game
     {
+
         [DataMember]
-        public string Name;
-
-        //[DataMember]
-        //public List<Player> listOfPlayers;
-
-        //[DataMember]
-        //public List<Piece> listOfPiece;
-
+        public Player player1;
+        public Player player2;
 
 
     }
-    //[DataContract]
-    //public class Piece
-    //{
-    //    int xCoordinate;
-    //    int yCoordinate;
-    //    string color;
-    //    int correspondingBS;
 
-    //    [DataMember]
-    //    public int XCoordinate
-    //    {
-    //        get { return xCoordinate; }
-    //        set { xCoordinate = value; }
-    //    }
-
-    //    [DataMember]
-    //    public int YCoordinate
-    //    {
-    //        get { return yCoordinate; }
-    //        set { yCoordinate = value; }
-    //    }
-    //    [DataMember]
-    //    public int CorrespondingBS
-    //    {
-    //        get { return correspondingBS; }
-    //        set { correspondingBS = value; }
-    //    }
-    //    public string Color
-    //    {
-    //        get { return color; }
-    //        set { color = value; }
-    //    }
-        
-        
-    //}
-
+ 
 
     [ServiceContract(Namespace = "Draught")]
     interface IGamePlay
@@ -68,12 +30,12 @@ namespace Draught
       
         //[OperationContract]
         //void changeLocation(int newX, int newY);
-
+        
         [OperationContract]
         bool sendMessage(string recipient, string message);
 
         [OperationContract]
-        bool makeMove( int x,int y);
+        void makeMove(int pbIndex,string id,int x,int y);
 
         [OperationContract]
         void quitGame();

@@ -127,6 +127,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="updateChanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pbIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="x" type="xs:int" />
+        <xs:element minOccurs="0" name="y" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateChangesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="sendMessage">
     <xs:complexType>
       <xs:sequence>
@@ -145,6 +159,8 @@
   <xs:element name="makeMove">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="pbIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="x" type="xs:int" />
         <xs:element minOccurs="0" name="y" type="xs:int" />
       </xs:sequence>
@@ -152,9 +168,7 @@
   </xs:element>
   <xs:element name="makeMoveResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="makeMoveResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="quitGame">

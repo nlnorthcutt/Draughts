@@ -181,6 +181,9 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/loadGame", ReplyAction="Draught/IPortal/loadGameResponse")]
         void loadGame();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/updateChanges", ReplyAction="Draught/IPortal/updateChangesResponse")]
+        void updateChanges(int pbIndex, int x, int y);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -279,10 +282,10 @@ namespace Draghts.DraughtsServiceReference {
         System.Threading.Tasks.Task<bool> sendMessageAsync(string recipient, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
-        bool makeMove(int x, int y);
+        void makeMove(int pbIndex, string id, int x, int y);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
-        System.Threading.Tasks.Task<bool> makeMoveAsync(int x, int y);
+        System.Threading.Tasks.Task makeMoveAsync(int pbIndex, string id, int x, int y);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/quitGame", ReplyAction="Draught/IGamePlay/quitGameResponse")]
         void quitGame();
@@ -326,12 +329,12 @@ namespace Draghts.DraughtsServiceReference {
             return base.Channel.sendMessageAsync(recipient, message);
         }
         
-        public bool makeMove(int x, int y) {
-            return base.Channel.makeMove(x, y);
+        public void makeMove(int pbIndex, string id, int x, int y) {
+            base.Channel.makeMove(pbIndex, id, x, y);
         }
         
-        public System.Threading.Tasks.Task<bool> makeMoveAsync(int x, int y) {
-            return base.Channel.makeMoveAsync(x, y);
+        public System.Threading.Tasks.Task makeMoveAsync(int pbIndex, string id, int x, int y) {
+            return base.Channel.makeMoveAsync(pbIndex, id, x, y);
         }
         
         public void quitGame() {

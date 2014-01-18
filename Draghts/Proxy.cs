@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Draghts
 {
@@ -60,6 +61,13 @@ namespace Draghts
 
               
             }
+
+        }
+        public void updateChanges(int pbIndex, int xPos, int yPos)
+        {
+            Point newPosition=new Point(xPos,yPos);
+            Proxy.loddy.listOfPBs[pbIndex].Location= newPosition;
+            Proxy.loddy.listOfBoardSquares[pbIndex] = 0;
 
         }
 		
