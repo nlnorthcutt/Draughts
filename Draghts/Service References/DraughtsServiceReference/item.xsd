@@ -16,18 +16,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
-  <xs:complexType name="Piece">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CorrespondingBS" type="xs:int" />
-      <xs:element minOccurs="0" name="XCoordinate" type="xs:int" />
-      <xs:element minOccurs="0" name="YCoordinate" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Piece" nillable="true" type="tns:Piece" />
-  <xs:complexType name="ArrayOfPiece">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Piece" nillable="true" type="tns:Piece" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPiece" nillable="true" type="tns:ArrayOfPiece" />
 </xs:schema>

@@ -17,200 +17,200 @@ namespace Draught
         Game game = new Game();
         List<Player> users=new List<Player>();
         Player invitedPlayer;
-        List<Piece> listOfPieces = new List<Piece>();
+        //List<Piece> listOfPieces = new List<Piece>();
         Player invitee=new Player();
 
-        Piece p1 = new Piece();
-        Piece p2 = new Piece();
-        Piece p3 = new Piece();
-        Piece p4 = new Piece();
-        Piece p5 = new Piece();
-        Piece p6 = new Piece();
-        Piece p7 = new Piece();
-        Piece p8 = new Piece();
-        Piece p9 = new Piece();
-        Piece p10 = new Piece();
-        Piece p11 = new Piece();
-        Piece p12 = new Piece();
-        Piece p13 = new Piece();
-        Piece p14 = new Piece();
-        Piece p15 = new Piece();
-        Piece p16 = new Piece();
-        Piece p17 = new Piece();
-        Piece p18 = new Piece();
-        Piece p19 = new Piece();
-        Piece p20 = new Piece();
-        Piece p21 = new Piece();
-        Piece p22 = new Piece();
-        Piece p23 = new Piece();
-        Piece p24 = new Piece();
+        //Piece p1 = new Piece();
+        //Piece p2 = new Piece();
+        //Piece p3 = new Piece();
+        //Piece p4 = new Piece();
+        //Piece p5 = new Piece();
+        //Piece p6 = new Piece();
+        //Piece p7 = new Piece();
+        //Piece p8 = new Piece();
+        //Piece p9 = new Piece();
+        //Piece p10 = new Piece();
+        //Piece p11 = new Piece();
+        //Piece p12 = new Piece();
+        //Piece p13 = new Piece();
+        //Piece p14 = new Piece();
+        //Piece p15 = new Piece();
+        //Piece p16 = new Piece();
+        //Piece p17 = new Piece();
+        //Piece p18 = new Piece();
+        //Piece p19 = new Piece();
+        //Piece p20 = new Piece();
+        //Piece p21 = new Piece();
+        //Piece p22 = new Piece();
+        //Piece p23 = new Piece();
+        //Piece p24 = new Piece();
 
         public Service1()
         {
-            p1.XCoordinate = 296;
-            p1.YCoordinate = 35;
-            p1.Color = "white";
-            p1.CorrespondingBS = 1;
-            listOfPieces.Add(p1);
+            //p1.XCoordinate = 296;
+            //p1.YCoordinate = 35;
+            //p1.Color = "white";
+            //p1.CorrespondingBS = 1;
+            //listOfPieces.Add(p1);
 
-            p2.XCoordinate = 398;
-            p2.YCoordinate = 35;
-            p2.Color = "white";
-            p2.CorrespondingBS = 3;
-            listOfPieces.Add(p2);
+            //p2.XCoordinate = 398;
+            //p2.YCoordinate = 35;
+            //p2.Color = "white";
+            //p2.CorrespondingBS = 3;
+            //listOfPieces.Add(p2);
 
 
-            p3.XCoordinate = 495;
-            p3.YCoordinate = 35;
-            p3.Color = "white";
-            p3.CorrespondingBS = 5;
-            listOfPieces.Add(p3);
+            //p3.XCoordinate = 495;
+            //p3.YCoordinate = 35;
+            //p3.Color = "white";
+            //p3.CorrespondingBS = 5;
+            //listOfPieces.Add(p3);
 
-            p4.XCoordinate = 595;
-            p4.YCoordinate = 35;
-            p4.Color = "white";
-            p4.CorrespondingBS = 7;
-            listOfPieces.Add(p4);
+            //p4.XCoordinate = 595;
+            //p4.YCoordinate = 35;
+            //p4.Color = "white";
+            //p4.CorrespondingBS = 7;
+            //listOfPieces.Add(p4);
 
-            p5.XCoordinate = 254;
-            p5.YCoordinate = 85;
-            p5.Color = "white";
-            p5.CorrespondingBS = 9;
-            listOfPieces.Add(p5);
+            //p5.XCoordinate = 254;
+            //p5.YCoordinate = 85;
+            //p5.Color = "white";
+            //p5.CorrespondingBS = 9;
+            //listOfPieces.Add(p5);
 
-            p6.XCoordinate = 346;
-            p6.YCoordinate = 85;
-            p6.Color = "white";
-            p6.CorrespondingBS = 11;
-            listOfPieces.Add(p6);
+            //p6.XCoordinate = 346;
+            //p6.YCoordinate = 85;
+            //p6.Color = "white";
+            //p6.CorrespondingBS = 11;
+            //listOfPieces.Add(p6);
 
-            p7.XCoordinate = 448;
-            p7.YCoordinate = 85;
-            p7.Color = "white";
-            p7.CorrespondingBS = 13;
-            listOfPieces.Add(p7);
+            //p7.XCoordinate = 448;
+            //p7.YCoordinate = 85;
+            //p7.Color = "white";
+            //p7.CorrespondingBS = 13;
+            //listOfPieces.Add(p7);
 
-            p8.XCoordinate = 547;
-            p8.YCoordinate = 85;
-            p8.Color = "white";
-            p8.CorrespondingBS = 15;
-            listOfPieces.Add(p8);
+            //p8.XCoordinate = 547;
+            //p8.YCoordinate = 85;
+            //p8.Color = "white";
+            //p8.CorrespondingBS = 15;
+            //listOfPieces.Add(p8);
 
-            p9.XCoordinate = 293;
-            p9.YCoordinate = 135;
-            p9.Color = "white";
-            p9.CorrespondingBS = 17;
-            listOfPieces.Add(p9);
+            //p9.XCoordinate = 293;
+            //p9.YCoordinate = 135;
+            //p9.Color = "white";
+            //p9.CorrespondingBS = 17;
+            //listOfPieces.Add(p9);
 
-            p10.XCoordinate = 398;
-            p10.YCoordinate = 135;
-            p10.Color = "white";
-            p10.CorrespondingBS = 19;
-            listOfPieces.Add(p10);
+            //p10.XCoordinate = 398;
+            //p10.YCoordinate = 135;
+            //p10.Color = "white";
+            //p10.CorrespondingBS = 19;
+            //listOfPieces.Add(p10);
 
-            p11.XCoordinate = 496;
-            p11.YCoordinate = 135;
-            p11.Color = "white";
-            p11.CorrespondingBS = 21;
-            listOfPieces.Add(p11);
+            //p11.XCoordinate = 496;
+            //p11.YCoordinate = 135;
+            //p11.Color = "white";
+            //p11.CorrespondingBS = 21;
+            //listOfPieces.Add(p11);
 
-            p12.XCoordinate = 595;
-            p12.YCoordinate = 135;
-            p12.Color = "white";
-            p12.CorrespondingBS = 23;
-            listOfPieces.Add(p12);
+            //p12.XCoordinate = 595;
+            //p12.YCoordinate = 135;
+            //p12.Color = "white";
+            //p12.CorrespondingBS = 23;
+            //listOfPieces.Add(p12);
 
-            //Black pieces
-            p13.XCoordinate = 296;
-            p13.YCoordinate = 291;
-            p13.Color = "black";
-            p13.CorrespondingBS = 41;
-            listOfPieces.Add(p13);
+            ////Black pieces
+            //p13.XCoordinate = 296;
+            //p13.YCoordinate = 291;
+            //p13.Color = "black";
+            //p13.CorrespondingBS = 41;
+            //listOfPieces.Add(p13);
 
-            p14.XCoordinate = 398;
-            p14.YCoordinate = 291;
-            p14.Color = "black";
-            p14.CorrespondingBS = 43;
-            listOfPieces.Add(p14);
+            //p14.XCoordinate = 398;
+            //p14.YCoordinate = 291;
+            //p14.Color = "black";
+            //p14.CorrespondingBS = 43;
+            //listOfPieces.Add(p14);
 
-            p15.XCoordinate = 495;
-            p15.YCoordinate = 291;
-            p15.Color = "black";
-            p15.CorrespondingBS = 45;
-            listOfPieces.Add(p15);
+            //p15.XCoordinate = 495;
+            //p15.YCoordinate = 291;
+            //p15.Color = "black";
+            //p15.CorrespondingBS = 45;
+            //listOfPieces.Add(p15);
 
-            p16.XCoordinate = 595;
-            p16.YCoordinate = 291;
-            p16.Color = "black";
-            p16.CorrespondingBS = 47;
-            listOfPieces.Add(p16);
+            //p16.XCoordinate = 595;
+            //p16.YCoordinate = 291;
+            //p16.Color = "black";
+            //p16.CorrespondingBS = 47;
+            //listOfPieces.Add(p16);
 
-            p17.XCoordinate = 254;
-            p17.YCoordinate = 342;
-            p17.Color = "black";
-            p17.CorrespondingBS = 49;
-            listOfPieces.Add(p17);
+            //p17.XCoordinate = 254;
+            //p17.YCoordinate = 342;
+            //p17.Color = "black";
+            //p17.CorrespondingBS = 49;
+            //listOfPieces.Add(p17);
 
-            p18.XCoordinate = 346;
-            p18.YCoordinate = 342;
-            p18.Color = "black";
-            p18.CorrespondingBS = 51;
-            listOfPieces.Add(p18);
+            //p18.XCoordinate = 346;
+            //p18.YCoordinate = 342;
+            //p18.Color = "black";
+            //p18.CorrespondingBS = 51;
+            //listOfPieces.Add(p18);
 
-            p19.XCoordinate = 448;
-            p19.YCoordinate = 342;
-            p19.Color = "black";
-            p19.CorrespondingBS = 53;
-            listOfPieces.Add(p19);
+            //p19.XCoordinate = 448;
+            //p19.YCoordinate = 342;
+            //p19.Color = "black";
+            //p19.CorrespondingBS = 53;
+            //listOfPieces.Add(p19);
 
-            p20.XCoordinate = 547;
-            p20.YCoordinate = 338;
-            p20.Color = "black";
-            p20.CorrespondingBS = 55;
-            listOfPieces.Add(p20);
+            //p20.XCoordinate = 547;
+            //p20.YCoordinate = 338;
+            //p20.Color = "black";
+            //p20.CorrespondingBS = 55;
+            //listOfPieces.Add(p20);
 
-            p21.XCoordinate = 304;
-            p21.YCoordinate = 393;
-            p21.Color = "black";
-            p21.CorrespondingBS = 57;
-            listOfPieces.Add(p21);
+            //p21.XCoordinate = 304;
+            //p21.YCoordinate = 393;
+            //p21.Color = "black";
+            //p21.CorrespondingBS = 57;
+            //listOfPieces.Add(p21);
 
-            p22.XCoordinate = 398;
-            p22.YCoordinate = 393;
-            p22.Color = "black";
-            p22.CorrespondingBS = 59;
-            listOfPieces.Add(p22);
+            //p22.XCoordinate = 398;
+            //p22.YCoordinate = 393;
+            //p22.Color = "black";
+            //p22.CorrespondingBS = 59;
+            //listOfPieces.Add(p22);
 
-            p23.XCoordinate = 496;
-            p23.YCoordinate = 389;
-            p23.Color = "black";
-            p23.CorrespondingBS = 61;
-            listOfPieces.Add(p23);
+            //p23.XCoordinate = 496;
+            //p23.YCoordinate = 389;
+            //p23.Color = "black";
+            //p23.CorrespondingBS = 61;
+            //listOfPieces.Add(p23);
 
-            p24.XCoordinate = 595;
-            p24.YCoordinate = 393;
-            p24.Color = "black";
-            p24.CorrespondingBS = 63;
-            listOfPieces.Add(p24);
+            //p24.XCoordinate = 595;
+            //p24.YCoordinate = 393;
+            //p24.Color = "black";
+            //p24.CorrespondingBS = 63;
+            //listOfPieces.Add(p24);
 
             game.Name = "Game1";
 
         }
 
         OleDbConnection connect = new OleDbConnection();
-        public List<Piece> getPieceList()
-        {
-            return listOfPieces;
-        }
+        //public List<Piece> getPieceList()
+        //{
+        //    return listOfPieces;
+        //}
 
         /// <summary>
         /// This method is used by the piece to move.
         /// </summary>
-        public void changeLocation(Piece pc,int newX, int newY)
-        {
-            pc.XCoordinate = newX;
-            pc.YCoordinate = newY;
-        }
+        //public void changeLocation(int newX, int newY)
+        //{
+        //    pc.XCoordinate = newX;
+        //    pc.YCoordinate = newY;
+        //}
         /// <summary>
         /// This method will be called when a user is signing up for the game
         /// </summary>
@@ -373,7 +373,7 @@ namespace Draught
         /// <param name="piece">The piece to be moved</param>
         /// <param name="boardSquare">The square on the board that the piece will be moved to</param>
         /// <returns>True if successful and false otherwise</returns>
-        public bool makeMove(Piece piece, int xPos,int yPos)
+        public bool makeMove(int xPos,int yPos)
         {
             return true;
         }

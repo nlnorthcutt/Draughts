@@ -18,13 +18,13 @@ namespace Draghts
         //private DraughtsServiceReference.PortalClient proxy2;
         bool gameStarted = true;
         private List<int> listOfBoardSquares = new List<int>();
-        private DraughtsServiceReference.Piece[] pieces;
+
         private DraughtsServiceReference.Player[] plyrs;
         public List<PictureBox>listOfPBs=new List<PictureBox>();
         public bool pieceSelected = false;
         int selectedBoardSquare;
         PictureBox pbSelected;
-        private DraughtsServiceReference.Piece selectedPiece;
+ 
         public Form1()
         {
             Proxy.loddy = this;
@@ -33,8 +33,6 @@ namespace Draghts
             //proxy2 = new DraughtsServiceReference.PortalClient(new InstanceContext(this));
             //proxy2.Subscribe();
 
-            
-            pieces = PortalProxy.proxy.getPieceList();
             for (int i = 0; i < 64; i++)
             {
 
@@ -83,16 +81,6 @@ namespace Draghts
             listOfPBs.Add(pictureBox26);
             //onlineUsers.Add("Users Online");
         }
-        //public void OnLoggingInOrOut1(DraughtsServiceReference.Player[] players)
-        //{
-        //    lbOnlineList.Items.Clear();
-        //    foreach (DraughtsServiceReference.Player pl in players)
-        //    {
-        //        lbOnlineList.Items.Add(pl.userName);
-        //    }
-
-        //}
-
 
         private void pictureBox26_Click(object sender, EventArgs e)
         {
@@ -121,7 +109,7 @@ namespace Draghts
                     if (newPost.X != -1 && newPost.Y != -1)
                     {
                         pbSelected.Location = newPost;
-                        PortalProxy.proxy.changeLocation(selectedPiece, newPost.X, newPost.Y);
+                        PortalProxy.proxy.makeMove(newPost.X, newPost.Y);
                     }
                     else
                         MessageBox.Show("Do not move to white space!");
@@ -129,39 +117,7 @@ namespace Draghts
                 else
                     MessageBox.Show("The space is already taken!");
             }
-            //if (gameStarted)
-            //{
-            //    if (listOfBoardSquares[calculateBoardSquareAtPost(e.Location)] == 1)
-            //    {
-            //            for (int i = 0; i < 64; i++)
-            //            {
-            //                if (pieces[i].CorrespondingBS == listOfBoardSquares[calculateBoardSquareAtPost(e.Location)])
-            //                {
-            //                    selectedPiece = pieces[i];
-            //                    for (int j = 0; j < 24; j++)
-            //                    {
-
-            //                        if (listOfPBs[j].Location.X == pieces[i].XCoordinate && listOfPBs[j].Location.Y == pieces[i].YCoordinate)
-            //                        {
-            //                            pbSelected=listOfPBs[j];
-            //                            pbLocation = listOfPBs[j].Location;
-            //                            pieceSelected = true;
-            //                        }
-                                   
-            //                    }
-
-
-            //                }
-            //            }
-                    
-                  
-            //    }
-            //    else
-            //    {
-            //        pbSelected.Location = e.Location;
-            //        proxy.changeLocation(selectedPiece, pbSelected.Location.X, pbSelected.Location.Y);
-            //    }
-            //}
+          
         }
         public Point calculateBoardSquareAtPost(Point pt)
         {
@@ -196,70 +152,70 @@ namespace Draghts
                 
             return point;
         }
-        public void determinePieceSelected(int pieceNumber,int pbNumber)
+        public void determinePieceSelected(int pbNumber)
         {
-            selectedPiece = pieces[pieceNumber];
+            
             pbSelected = listOfPBs[pbNumber];
         }
 
         private void pictureBox7_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(0,5);
+            determinePieceSelected(5);
         }
 
         private void pictureBox8_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(1,6);
+            determinePieceSelected(6);
         }
 
         private void pictureBox9_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(2, 7);
+            determinePieceSelected(7);
         }
 
         private void pictureBox12_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(3, 10);
+            determinePieceSelected(10);
         }
 
         private void pictureBox5_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(4, 3);
+            determinePieceSelected(3);
         }
 
         private void pictureBox11_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(5, 9);
+            determinePieceSelected(9);
         }
 
         private void pictureBox6_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(6, 7);
+            determinePieceSelected(7);
         }
 
         private void pictureBox3_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(7, 1);
+            determinePieceSelected(1);
         }
 
         private void pictureBox13_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(8, 11);
+            determinePieceSelected(11);
         }
 
         private void pictureBox10_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(9, 8);
+            determinePieceSelected(8);
         }
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(10, 0);
+            determinePieceSelected(0);
         }
 
         private void pictureBox4_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(11, 2);
+            determinePieceSelected(2);
         }
 
         private void Form1_Load(object sender, EventArgs e)

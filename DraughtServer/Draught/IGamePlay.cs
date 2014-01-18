@@ -16,70 +16,70 @@ namespace Draught
         [DataMember]
         public string Name;
 
-        [DataMember]
-        public List<Player> listOfPlayers;
+        //[DataMember]
+        //public List<Player> listOfPlayers;
 
-        [DataMember]
-        public List<Piece> listOfPiece;
+        //[DataMember]
+        //public List<Piece> listOfPiece;
 
 
 
     }
-    [DataContract]
-    public class Piece
-    {
-        int xCoordinate;
-        int yCoordinate;
-        string color;
-        int correspondingBS;
+    //[DataContract]
+    //public class Piece
+    //{
+    //    int xCoordinate;
+    //    int yCoordinate;
+    //    string color;
+    //    int correspondingBS;
 
-        [DataMember]
-        public int XCoordinate
-        {
-            get { return xCoordinate; }
-            set { xCoordinate = value; }
-        }
+    //    [DataMember]
+    //    public int XCoordinate
+    //    {
+    //        get { return xCoordinate; }
+    //        set { xCoordinate = value; }
+    //    }
 
-        [DataMember]
-        public int YCoordinate
-        {
-            get { return yCoordinate; }
-            set { yCoordinate = value; }
-        }
-        [DataMember]
-        public int CorrespondingBS
-        {
-            get { return correspondingBS; }
-            set { correspondingBS = value; }
-        }
-        public string Color
-        {
-            get { return color; }
-            set { color = value; }
-        }
+    //    [DataMember]
+    //    public int YCoordinate
+    //    {
+    //        get { return yCoordinate; }
+    //        set { yCoordinate = value; }
+    //    }
+    //    [DataMember]
+    //    public int CorrespondingBS
+    //    {
+    //        get { return correspondingBS; }
+    //        set { correspondingBS = value; }
+    //    }
+    //    public string Color
+    //    {
+    //        get { return color; }
+    //        set { color = value; }
+    //    }
         
         
-    }
+    //}
 
 
     [ServiceContract(Namespace = "Draught")]
     interface IGamePlay
     {
       
-        [OperationContract]
-        void changeLocation(Piece pc,int newX, int newY);
+        //[OperationContract]
+        //void changeLocation(int newX, int newY);
 
         [OperationContract]
         bool sendMessage(string recipient, string message);
 
         [OperationContract]
-        bool makeMove(Piece piece, int x,int y);
+        bool makeMove( int x,int y);
 
         [OperationContract]
         void quitGame();
 
-        [OperationContract]
-        List<Piece> getPieceList();
+        //[OperationContract]
+        //List<Piece> getPieceList();
 
 
 
