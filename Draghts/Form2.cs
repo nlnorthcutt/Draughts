@@ -14,34 +14,15 @@ namespace Draghts
 {
     public partial class Form2 : Form
     {  
-        //private DraughtsServiceReference.PortalClient proxy;
+   
         public Form2()
         {
             Proxy.login = this;
             InitializeComponent();
-            //PortalProxy.proxy = new DraughtsServiceReference.PortalClient();
-            //proxy.Subscribe();
+
 
         }
-        //public void OnLoggingInOrOut(DraughtsServiceReference.Player[] players)
-        //{
-        //    string name;
-        //    foreach (DraughtsServiceReference.Player pl in players)
-        //    {
-        //        name = pl.userName;
-        //    }
-
-        //}
-
-        //public void OnLoggingInOrOut1(DraughtsServiceReference.Player[] players)
-        //{
-        //    string name;
-        //    foreach (DraughtsServiceReference.Player pl in players)
-        //    {
-        //        lbOnlineList.Items.Add(pl.userName);
-        //    }
-
-        //}
+ 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             bool result;
@@ -81,7 +62,7 @@ namespace Draghts
                 gameForm.Show();
                 Proxy.myUsername = tbUser.Text;
     
-                //proxy.Subscribe();
+  
             }
             else
             {

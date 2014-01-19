@@ -42,7 +42,7 @@ namespace Draghts
 
             }
            
-
+            //white
                 
                 listOfBoardSquares[0] = 5;
                 listOfBoardSquares[2] = 6;
@@ -59,7 +59,7 @@ namespace Draghts
 
             
            
-
+            //black
                
                 listOfBoardSquares[41] = 12;
                 listOfBoardSquares[43] = 19;
@@ -129,16 +129,50 @@ namespace Draghts
                 {
                     if (newPost.X != -1 && newPost.Y != -1)
                     {
-                        pbSelected.Location = newPost;
-                        PortalProxy.proxy.makeMove(pbIndex,Proxy.myUsername,newPost.X, newPost.Y);
-                        for (int i = 0; i < listOfBoardSquares.Count; i++)
+                        if (System.Math.Abs(pbSelected.Location.Y - newPost.Y) <= 100)
                         {
-                            if (listOfBoardSquares[i] == pbIndex)
+                            if (System.Math.Abs(pbSelected.Location.Y - newPost.Y) <= 50)
                             {
-                                listOfBoardSquares[i] = 0;
+                                pbSelected.Location = newPost;
+                                PortalProxy.proxy.makeMove(pbIndex, Proxy.myUsername, newPost.X, newPost.Y);
+                                for (int i = 0; i < listOfBoardSquares.Count; i++)
+                                {
+                                    if (listOfBoardSquares[i] == pbIndex)
+                                    {
+                                        listOfBoardSquares[i] = 0;
+                                    }
+                                }
+                                listOfBoardSquares[selectedBoardSquare] = 1;
+                            }
+                            else
+                            {
+                                Point newPost1;
+                                newPost1 = new Point(newPost.X + 50, newPost.Y - 50);
+                                calculateBoardSquareAtPost2(newPost1);
+                                if (listOfBoardSquares[selectedBoardSquare] != 0)
+                                {
+                                    pbSelected.Location = newPost;
+                                    PortalProxy.proxy.makeMove(pbIndex, Proxy.myUsername, newPost.X, newPost.Y);
+                                    for (int i = 0; i < listOfBoardSquares.Count; i++)
+                                    {
+                                        if (listOfBoardSquares[i] == pbIndex)
+                                        {
+                                            listOfBoardSquares[i] = 0;
+                                        }
+                                    }
+                                    MessageBox.Show("Check!");
+                                    listOfBoardSquares[selectedBoardSquare] = 1;
+
+                                }
+                                else
+                                    MessageBox.Show("Move not allowed!");
                             }
                         }
-                            listOfBoardSquares[selectedBoardSquare] = 1;
+                        else
+                        {
+
+
+                        }
                     }
                     else
                         MessageBox.Show("Do not move to white space!");
@@ -146,6 +180,18 @@ namespace Draghts
                 else
                     MessageBox.Show("The space is already taken!");
             }
+          
+        }
+        public void calculateBoardSquareAtPost2(Point pt)
+        {
+            int row, column;
+        
+
+            column = (pt.X-246) / 50;
+            row = (pt.Y-35) / 50;
+
+          
+            selectedBoardSquare = (8 * row) + column + 1;
           
         }
         public Point calculateBoardSquareAtPost(Point pt)
