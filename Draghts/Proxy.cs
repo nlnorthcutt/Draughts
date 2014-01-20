@@ -58,10 +58,10 @@ namespace Draghts
             {
               
                 Proxy.loddy.listOfPBs[i].Visible = true;
-
-              
+               
+ 
             }
-
+    
         }
         public void updateChanges(int pbIndex, int xPos, int yPos)
         {
@@ -70,6 +70,24 @@ namespace Draghts
             Proxy.loddy.listOfBoardSquares[pbIndex] = 0;
 
         }
+        public void messageRecieved(string message)
+        {
+            Proxy.loddy.listBox1.Items.Add(message);
+
+        }
+        public void gameInterupted(string message)
+        {
+            MessageBox.Show(message);
+            for (int i = 0; i < Proxy.loddy.listOfPBs.Count; i++)
+            {
+
+                Proxy.loddy.listOfPBs[i].Visible = false;
+
+
+            }
+
+        }
+     
 		
 	}
     static class PortalProxy

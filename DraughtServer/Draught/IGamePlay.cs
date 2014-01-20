@@ -32,13 +32,13 @@ namespace Draught
         //void changeLocation(int newX, int newY);
         
         [OperationContract]
-        bool sendMessage(string recipient, string message);
+        bool sendMessage(string sender,string message);
 
         [OperationContract]
         void makeMove(int pbIndex,string id,int x,int y);
 
         [OperationContract]
-        void quitGame();
+        void quitGame(string sender,string message);
 
         //[OperationContract]
         //List<Piece> getPieceList();

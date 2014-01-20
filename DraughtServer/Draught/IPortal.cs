@@ -24,6 +24,7 @@ namespace Draught
         [DataMember]
         public Player opponent;
 
+
         [DataMember]
         public IPortalCallBack PortalCallBack { get; set; }
 
@@ -69,6 +70,11 @@ namespace Draught
 
         [OperationContract]
         void updateChanges(int pbIndex,int x,int y);
+
+        [OperationContract]
+        void messageRecieved(string message);
+        [OperationContract]
+        void gameInterupted(string message);
     }
     //[ServiceContract(Namespace="Draught")]
     interface IPortalEvents

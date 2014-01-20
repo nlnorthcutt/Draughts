@@ -351,9 +351,22 @@ namespace Draught
         /// <param name="recipient">The player that the message is intended for</param>
         /// <param name="message">The message being sent</param>
         /// <returns>Retruns true if the message is successfully sent and false otherwise</returns>
-        public bool sendMessage(string recipient, string message)
+        public bool sendMessage(string sender, string message)
         {
-            return true;
+            for (int i = 0; i < games.Count; i++)
+            {
+                if (games[i].player1.userName == sender)
+                {
+                    games[i].player2.PortalCallBack.messageRecieved(message);
+                }
+                else if (games[i].player2.userName == sender)
+                {
+                    games[i].player1.PortalCallBack.messageRecieved(message);
+                }
+                
+            }
+
+                return true;
         }
 
      /****************************************************************************************************/
@@ -415,8 +428,20 @@ namespace Draught
         /// <summary>
         /// This method is called when a player wantws to quit the game
         /// </summary>
-        public void quitGame()
+        public void quitGame(string sender,string message)
         {
+            for (int i = 0; i < games.Count; i++)
+            {
+                if (games[i].player1.userName == sender)
+                {
+                    games[i].player2.PortalCallBack.gameInterupted(message);
+                }
+                else if (games[i].player2.userName == sender)
+                {
+                    games[i].player1.PortalCallBack.gameInterupted(message);
+                }
+
+            }
 
         }
 

@@ -184,6 +184,12 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/updateChanges", ReplyAction="Draught/IPortal/updateChangesResponse")]
         void updateChanges(int pbIndex, int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/messageRecieved", ReplyAction="Draught/IPortal/messageRecievedResponse")]
+        void messageRecieved(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/gameInterupted", ReplyAction="Draught/IPortal/gameInteruptedResponse")]
+        void gameInterupted(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -276,10 +282,10 @@ namespace Draghts.DraughtsServiceReference {
     public interface IGamePlay {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/sendMessage", ReplyAction="Draught/IGamePlay/sendMessageResponse")]
-        bool sendMessage(string recipient, string message);
+        bool sendMessage(string sender, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/sendMessage", ReplyAction="Draught/IGamePlay/sendMessageResponse")]
-        System.Threading.Tasks.Task<bool> sendMessageAsync(string recipient, string message);
+        System.Threading.Tasks.Task<bool> sendMessageAsync(string sender, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/makeMove", ReplyAction="Draught/IGamePlay/makeMoveResponse")]
         void makeMove(int pbIndex, string id, int x, int y);
@@ -288,10 +294,10 @@ namespace Draghts.DraughtsServiceReference {
         System.Threading.Tasks.Task makeMoveAsync(int pbIndex, string id, int x, int y);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/quitGame", ReplyAction="Draught/IGamePlay/quitGameResponse")]
-        void quitGame();
+        void quitGame(string sender, string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IGamePlay/quitGame", ReplyAction="Draught/IGamePlay/quitGameResponse")]
-        System.Threading.Tasks.Task quitGameAsync();
+        System.Threading.Tasks.Task quitGameAsync(string sender, string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -321,12 +327,12 @@ namespace Draghts.DraughtsServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool sendMessage(string recipient, string message) {
-            return base.Channel.sendMessage(recipient, message);
+        public bool sendMessage(string sender, string message) {
+            return base.Channel.sendMessage(sender, message);
         }
         
-        public System.Threading.Tasks.Task<bool> sendMessageAsync(string recipient, string message) {
-            return base.Channel.sendMessageAsync(recipient, message);
+        public System.Threading.Tasks.Task<bool> sendMessageAsync(string sender, string message) {
+            return base.Channel.sendMessageAsync(sender, message);
         }
         
         public void makeMove(int pbIndex, string id, int x, int y) {
@@ -337,12 +343,12 @@ namespace Draghts.DraughtsServiceReference {
             return base.Channel.makeMoveAsync(pbIndex, id, x, y);
         }
         
-        public void quitGame() {
-            base.Channel.quitGame();
+        public void quitGame(string sender, string message) {
+            base.Channel.quitGame(sender, message);
         }
         
-        public System.Threading.Tasks.Task quitGameAsync() {
-            return base.Channel.quitGameAsync();
+        public System.Threading.Tasks.Task quitGameAsync(string sender, string message) {
+            return base.Channel.quitGameAsync(sender, message);
         }
     }
 }

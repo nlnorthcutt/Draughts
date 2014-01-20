@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
+using System.Diagnostics;
 
 
 namespace Draghts
@@ -23,9 +24,10 @@ namespace Draghts
         public List<PictureBox>listOfPBs=new List<PictureBox>();
         public bool pieceSelected = false;
         int selectedBoardSquare;
+        int permanentSelectedBoardSquare;
         PictureBox pbSelected;
         public int pbIndex;
- 
+        public Stopwatch stopWatch = new Stopwatch();
         public Form1()
         {
             Proxy.loddy = this;
@@ -44,18 +46,18 @@ namespace Draghts
            
             //white
                 
-                listOfBoardSquares[0] = 5;
-                listOfBoardSquares[2] = 6;
-                listOfBoardSquares[4] = 7;
-                listOfBoardSquares[6] = 10;
-                listOfBoardSquares[8] = 3;
-                listOfBoardSquares[10] = 9;
-                listOfBoardSquares[12] = 4;
-                listOfBoardSquares[14] = 1;
-                listOfBoardSquares[16] = 12;
-                listOfBoardSquares[18] = 8;
-                listOfBoardSquares[20] = 0;
-                listOfBoardSquares[22] = 2;
+                listOfBoardSquares[1] = 5;
+                listOfBoardSquares[3] = 6;
+                listOfBoardSquares[5] = 7;
+                listOfBoardSquares[7] = 10;
+                listOfBoardSquares[9] = 3;
+                listOfBoardSquares[11] = 9;
+                listOfBoardSquares[13] = 4;
+                listOfBoardSquares[15] = 1;
+                listOfBoardSquares[17] = 12;
+                listOfBoardSquares[19] = 8;
+                listOfBoardSquares[21] = 0;
+                listOfBoardSquares[23] = 2;
 
             
            
@@ -142,12 +144,28 @@ namespace Draghts
                                         listOfBoardSquares[i] = 0;
                                     }
                                 }
-                                listOfBoardSquares[selectedBoardSquare] = 1;
+                                listOfBoardSquares[selectedBoardSquare] = pbIndex;
                             }
                             else
                             {
                                 Point newPost1;
-                                newPost1 = new Point(newPost.X + 50, newPost.Y - 50);
+                                if (newPost.X < pbSelected.Location.X&&newPost.Y>pbSelected.Location.Y)
+                                {
+                                    newPost1 = new Point(newPost.X + 50, newPost.Y - 50);
+                                }
+                                else if(newPost.X>pbSelected.Location.X&&newPost.Y>pbSelected.Location.Y)
+                                {
+                                    newPost1 = new Point(newPost.X - 50, newPost.Y - 50);
+                                }
+                                else if (pbSelected.Location.Y > newPost.Y&&pbSelected.Location.X>newPost.X)
+                                {
+                                    newPost1 = new Point(newPost.X - 50, newPost.Y - 50);
+                                }
+                                else
+                                {
+                                    newPost1 = new Point(newPost.X + 50, newPost.Y - 50);
+                                }
+                                
                                 calculateBoardSquareAtPost2(newPost1);
                                 if (listOfBoardSquares[selectedBoardSquare] != 0)
                                 {
@@ -161,7 +179,8 @@ namespace Draghts
                                         }
                                     }
                                     MessageBox.Show("Check!");
-                                    listOfBoardSquares[selectedBoardSquare] = 1;
+                                    listOfPBs[listOfBoardSquares[selectedBoardSquare]].Visible=false;
+                                    listOfBoardSquares[permanentSelectedBoardSquare] = pbIndex;
 
                                 }
                                 else
@@ -191,7 +210,7 @@ namespace Draghts
             row = (pt.Y-35) / 50;
 
           
-            selectedBoardSquare = (8 * row) + column + 1;
+            selectedBoardSquare = (8 * row) + column;
           
         }
         public Point calculateBoardSquareAtPost(Point pt)
@@ -204,7 +223,10 @@ namespace Draghts
 
             y = (50 * row)+35; 
             x= (50 * column)+246;
+            
             selectedBoardSquare=(8 * row) + column;
+            permanentSelectedBoardSquare = (8 * row) + column;
+
             if ((row % 2) == 0)
             {
                 if ((selectedBoardSquare % 2) != 0)
@@ -212,7 +234,7 @@ namespace Draghts
                     point = new Point(x, y);
                 }
                 else
-                    point = new Point(-1,-1);
+                    point = new Point(-1, -1);
             }
             else
             {
@@ -221,11 +243,12 @@ namespace Draghts
                     point = new Point(x, y);
                 }
                 else
-                    point = new Point(-1,-1);
+                    point = new Point(-1, -1);
             }
-            
-                
+
+
             return point;
+            //return pt;
         }
         public void determinePieceSelected(int pbNumber)
         {
@@ -265,7 +288,7 @@ namespace Draghts
 
         private void pictureBox6_MouseClick(object sender, MouseEventArgs e)
         {
-            determinePieceSelected(7);
+            determinePieceSelected(4);
         }
 
         private void pictureBox3_MouseClick(object sender, MouseEventArgs e)
@@ -336,6 +359,14 @@ namespace Draghts
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            if (PortalProxy.proxy.sendMessage(Proxy.myUsername, this.tbMessage.Text))
+            {
+                Proxy.loddy.listBox1.Items.Add(this.tbMessage.Text);
+            }
+            else
+            {
+                MessageBox.Show("Message not sent!");
+            }
 
         }
 
@@ -397,6 +428,11 @@ namespace Draghts
         private void pictureBox19_MouseClick(object sender, MouseEventArgs e)
         {
             determinePieceSelected(17);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PortalProxy.proxy.quitGame(Proxy.myUsername,Proxy.myUsername+" just quit :-(");
         }
     }
 }
