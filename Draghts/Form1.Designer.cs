@@ -69,6 +69,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -426,9 +427,9 @@
             this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label1.Location = new System.Drawing.Point(353, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Score: Neil  0:0 Ruth";
+            this.label1.Text = "Score:  0:";
             // 
             // btnSave
             // 
@@ -548,12 +549,24 @@
             this.listBox1.Size = new System.Drawing.Size(162, 212);
             this.listBox1.TabIndex = 42;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label5.Image = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
+            this.label5.Location = new System.Drawing.Point(433, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 13);
+            this.label5.TabIndex = 43;
+            this.label5.Text = " 0\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
             this.ClientSize = new System.Drawing.Size(948, 504);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button2);
@@ -656,7 +669,6 @@
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSignOut;
@@ -668,6 +680,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label5;
     }
 }
 

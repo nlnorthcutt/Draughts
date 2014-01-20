@@ -49,6 +49,12 @@
   <wsdl:message name="IPortal_setOpponent_OutputMessage">
     <wsdl:part name="parameters" element="tns:setOpponentResponse" />
   </wsdl:message>
+  <wsdl:message name="IPortal_updateScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateScore" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_updateScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateScoreResponse" />
+  </wsdl:message>
   <wsdl:message name="IPortal_OnInvitation_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnInvitation" />
   </wsdl:message>
@@ -84,6 +90,12 @@
   </wsdl:message>
   <wsdl:message name="IPortal_gameInterupted_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:gameInteruptedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_onScoreChange_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:onScoreChange" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_onScoreChange_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:onScoreChangeResponse" />
   </wsdl:message>
   <wsdl:message name="IGamePlay_sendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:sendMessage" />
@@ -132,6 +144,10 @@
       <wsdl:input wsaw:Action="Draught/IPortal/setOpponent" message="tns:IPortal_setOpponent_InputMessage" />
       <wsdl:output wsaw:Action="Draught/IPortal/setOpponentResponse" message="tns:IPortal_setOpponent_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="updateScore">
+      <wsdl:input wsaw:Action="Draught/IPortal/updateScore" message="tns:IPortal_updateScore_InputMessage" />
+      <wsdl:output wsaw:Action="Draught/IPortal/updateScoreResponse" message="tns:IPortal_updateScore_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="OnInvitation">
       <wsdl:output wsaw:Action="Draught/IPortal/OnInvitation" message="tns:IPortal_OnInvitation_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="Draught/IPortal/OnInvitationResponse" message="tns:IPortal_OnInvitation_InputCallbackMessage" />
@@ -155,6 +171,10 @@
     <wsdl:operation name="gameInterupted">
       <wsdl:output wsaw:Action="Draught/IPortal/gameInterupted" message="tns:IPortal_gameInterupted_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="Draught/IPortal/gameInteruptedResponse" message="tns:IPortal_gameInterupted_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="onScoreChange">
+      <wsdl:output wsaw:Action="Draught/IPortal/onScoreChange" message="tns:IPortal_onScoreChange_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="Draught/IPortal/onScoreChangeResponse" message="tns:IPortal_onScoreChange_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGamePlay">

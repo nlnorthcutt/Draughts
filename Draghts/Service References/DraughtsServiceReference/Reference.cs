@@ -168,6 +168,12 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/setOpponent", ReplyAction="Draught/IPortal/setOpponentResponse")]
         System.Threading.Tasks.Task setOpponentAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/updateScore", ReplyAction="Draught/IPortal/updateScoreResponse")]
+        void updateScore(string userName, int pieceNr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/updateScore", ReplyAction="Draught/IPortal/updateScoreResponse")]
+        System.Threading.Tasks.Task updateScoreAsync(string userName, int pieceNr);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -190,6 +196,9 @@ namespace Draghts.DraughtsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/gameInterupted", ReplyAction="Draught/IPortal/gameInteruptedResponse")]
         void gameInterupted(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/onScoreChange", ReplyAction="Draught/IPortal/onScoreChangeResponse")]
+        void onScoreChange(int pieceNr);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -274,6 +283,14 @@ namespace Draghts.DraughtsServiceReference {
         
         public System.Threading.Tasks.Task setOpponentAsync(string userName) {
             return base.Channel.setOpponentAsync(userName);
+        }
+        
+        public void updateScore(string userName, int pieceNr) {
+            base.Channel.updateScore(userName, pieceNr);
+        }
+        
+        public System.Threading.Tasks.Task updateScoreAsync(string userName, int pieceNr) {
+            return base.Channel.updateScoreAsync(userName, pieceNr);
         }
     }
     

@@ -28,6 +28,7 @@ namespace Draghts
         PictureBox pbSelected;
         public int pbIndex;
         public Stopwatch stopWatch = new Stopwatch();
+        public int myScore=0, myOpponentsScore=0;
         public Form1()
         {
             Proxy.loddy = this;
@@ -180,6 +181,9 @@ namespace Draghts
                                     }
                                     MessageBox.Show("Check!");
                                     listOfPBs[listOfBoardSquares[selectedBoardSquare]].Visible=false;
+                                    myScore++;
+                                    Proxy.proxy.updateScore(Proxy.myUsername,listOfBoardSquares[selectedBoardSquare]);
+                                    label1.Text = Proxy.myUsername + ": " + myScore;
                                     listOfBoardSquares[permanentSelectedBoardSquare] = pbIndex;
 
                                 }

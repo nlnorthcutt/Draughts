@@ -53,6 +53,9 @@ namespace Draught
        [OperationContract]
         void setOpponent(string userName);
 
+       [OperationContract]
+       void updateScore(string userName,int pieceNr);
+
     }
 
 
@@ -75,6 +78,8 @@ namespace Draught
         void messageRecieved(string message);
         [OperationContract]
         void gameInterupted(string message);
+        [OperationContract]
+        void onScoreChange(int pieceNr);
     }
     //[ServiceContract(Namespace="Draught")]
     interface IPortalEvents

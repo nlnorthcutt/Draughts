@@ -90,6 +90,19 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="updateScore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pieceNr" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateScoreResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnInvitation">
     <xs:complexType>
       <xs:sequence>
@@ -161,6 +174,18 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="gameInteruptedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onScoreChange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pieceNr" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onScoreChangeResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

@@ -47,151 +47,7 @@ namespace Draught
 
         public Service1()
         {
-            //p1.XCoordinate = 296;
-            //p1.YCoordinate = 35;
-            //p1.Color = "white";
-            //p1.CorrespondingBS = 1;
-            //listOfPieces.Add(p1);
-
-            //p2.XCoordinate = 398;
-            //p2.YCoordinate = 35;
-            //p2.Color = "white";
-            //p2.CorrespondingBS = 3;
-            //listOfPieces.Add(p2);
-
-
-            //p3.XCoordinate = 495;
-            //p3.YCoordinate = 35;
-            //p3.Color = "white";
-            //p3.CorrespondingBS = 5;
-            //listOfPieces.Add(p3);
-
-            //p4.XCoordinate = 595;
-            //p4.YCoordinate = 35;
-            //p4.Color = "white";
-            //p4.CorrespondingBS = 7;
-            //listOfPieces.Add(p4);
-
-            //p5.XCoordinate = 254;
-            //p5.YCoordinate = 85;
-            //p5.Color = "white";
-            //p5.CorrespondingBS = 9;
-            //listOfPieces.Add(p5);
-
-            //p6.XCoordinate = 346;
-            //p6.YCoordinate = 85;
-            //p6.Color = "white";
-            //p6.CorrespondingBS = 11;
-            //listOfPieces.Add(p6);
-
-            //p7.XCoordinate = 448;
-            //p7.YCoordinate = 85;
-            //p7.Color = "white";
-            //p7.CorrespondingBS = 13;
-            //listOfPieces.Add(p7);
-
-            //p8.XCoordinate = 547;
-            //p8.YCoordinate = 85;
-            //p8.Color = "white";
-            //p8.CorrespondingBS = 15;
-            //listOfPieces.Add(p8);
-
-            //p9.XCoordinate = 293;
-            //p9.YCoordinate = 135;
-            //p9.Color = "white";
-            //p9.CorrespondingBS = 17;
-            //listOfPieces.Add(p9);
-
-            //p10.XCoordinate = 398;
-            //p10.YCoordinate = 135;
-            //p10.Color = "white";
-            //p10.CorrespondingBS = 19;
-            //listOfPieces.Add(p10);
-
-            //p11.XCoordinate = 496;
-            //p11.YCoordinate = 135;
-            //p11.Color = "white";
-            //p11.CorrespondingBS = 21;
-            //listOfPieces.Add(p11);
-
-            //p12.XCoordinate = 595;
-            //p12.YCoordinate = 135;
-            //p12.Color = "white";
-            //p12.CorrespondingBS = 23;
-            //listOfPieces.Add(p12);
-
-            ////Black pieces
-            //p13.XCoordinate = 296;
-            //p13.YCoordinate = 291;
-            //p13.Color = "black";
-            //p13.CorrespondingBS = 41;
-            //listOfPieces.Add(p13);
-
-            //p14.XCoordinate = 398;
-            //p14.YCoordinate = 291;
-            //p14.Color = "black";
-            //p14.CorrespondingBS = 43;
-            //listOfPieces.Add(p14);
-
-            //p15.XCoordinate = 495;
-            //p15.YCoordinate = 291;
-            //p15.Color = "black";
-            //p15.CorrespondingBS = 45;
-            //listOfPieces.Add(p15);
-
-            //p16.XCoordinate = 595;
-            //p16.YCoordinate = 291;
-            //p16.Color = "black";
-            //p16.CorrespondingBS = 47;
-            //listOfPieces.Add(p16);
-
-            //p17.XCoordinate = 254;
-            //p17.YCoordinate = 342;
-            //p17.Color = "black";
-            //p17.CorrespondingBS = 49;
-            //listOfPieces.Add(p17);
-
-            //p18.XCoordinate = 346;
-            //p18.YCoordinate = 342;
-            //p18.Color = "black";
-            //p18.CorrespondingBS = 51;
-            //listOfPieces.Add(p18);
-
-            //p19.XCoordinate = 448;
-            //p19.YCoordinate = 342;
-            //p19.Color = "black";
-            //p19.CorrespondingBS = 53;
-            //listOfPieces.Add(p19);
-
-            //p20.XCoordinate = 547;
-            //p20.YCoordinate = 338;
-            //p20.Color = "black";
-            //p20.CorrespondingBS = 55;
-            //listOfPieces.Add(p20);
-
-            //p21.XCoordinate = 304;
-            //p21.YCoordinate = 393;
-            //p21.Color = "black";
-            //p21.CorrespondingBS = 57;
-            //listOfPieces.Add(p21);
-
-            //p22.XCoordinate = 398;
-            //p22.YCoordinate = 393;
-            //p22.Color = "black";
-            //p22.CorrespondingBS = 59;
-            //listOfPieces.Add(p22);
-
-            //p23.XCoordinate = 496;
-            //p23.YCoordinate = 389;
-            //p23.Color = "black";
-            //p23.CorrespondingBS = 61;
-            //listOfPieces.Add(p23);
-
-            //p24.XCoordinate = 595;
-            //p24.YCoordinate = 393;
-            //p24.Color = "black";
-            //p24.CorrespondingBS = 63;
-            //listOfPieces.Add(p24);
+    
 
         
 
@@ -480,6 +336,22 @@ namespace Draught
                 }
             }
     
+        }
+        public void updateScore(string userName,int pieceNr)
+        {
+            for (int i = 0; i < games.Count; i++)
+            {
+                if (games[i].player1.userName == userName)
+                {
+                    games[i].player2.PortalCallBack.onScoreChange(pieceNr);
+                }
+                else if (games[i].player2.userName == userName)
+                {
+                    games[i].player1.PortalCallBack.onScoreChange(pieceNr);
+                }
+
+            }
+            
         }
 
     }

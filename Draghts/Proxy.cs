@@ -63,15 +63,23 @@ namespace Draghts
             }
     
         }
+        public void onScoreChange(int pcNr)
+        {
+            Proxy.loddy.listOfPBs[pcNr].Visible = false;
+            Proxy.loddy.myOpponentsScore++;
+            Proxy.loddy.label5.Text = Convert.ToString(Proxy.loddy.myOpponentsScore);
+        }
         public void updateChanges(int pbIndex, int xPos, int yPos)
         {
             Point newPosition=new Point(xPos,yPos);
             Proxy.loddy.listOfPBs[pbIndex].Location= newPosition;
             Proxy.loddy.listOfBoardSquares[pbIndex] = 0;
+          
 
         }
         public void messageRecieved(string message)
         {
+
             Proxy.loddy.listBox1.Items.Add(message);
 
         }
