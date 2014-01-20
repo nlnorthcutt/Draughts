@@ -58,7 +58,6 @@
             this.tbMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -431,24 +430,12 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Score:  0:";
             // 
-            // btnSave
-            // 
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
-            this.btnSave.Location = new System.Drawing.Point(547, 451);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(101, 41);
-            this.btnSave.TabIndex = 32;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = global::Draghts.Properties.Resources.Dark_Wood_Background_640x400;
-            this.button3.Location = new System.Drawing.Point(244, 451);
+            this.button3.Location = new System.Drawing.Point(393, 451);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(101, 41);
             this.button3.TabIndex = 33;
@@ -467,6 +454,7 @@
             this.btnSignOut.TabIndex = 34;
             this.btnSignOut.Text = "Sign out";
             this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // label2
             // 
@@ -576,7 +564,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tbMessage);
@@ -669,7 +656,6 @@
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Label label2;

@@ -42,7 +42,7 @@ namespace Draught
         bool Invite(string sender,string recipient);
 
         [OperationContract]
-        void logOut();
+        bool logOut(string name);
 
         [OperationContract]
         void Subscribe();

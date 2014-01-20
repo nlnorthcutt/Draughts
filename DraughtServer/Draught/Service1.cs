@@ -195,9 +195,25 @@ namespace Draught
         /// <summary>
         /// This method will be called when a user is logging out from the game app
         /// </summary>
-        public void logOut()
+        public bool logOut(string name)
         {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].userName == name)
+                {
+                    users.RemoveAt(i);
+                }
+            }
+            for(int i=0;i<users.Count;i++)
+            {
+                    if (users.Count > 0)
+                    {
+                        users[i].PortalCallBack.OnLoggingInOrOut1(users);
+                    }
 
+                    return true;
+            }
+            return false;
         }
 
     /*****************************************************************************************************/

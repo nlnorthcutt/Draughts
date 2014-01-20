@@ -146,10 +146,10 @@ namespace Draghts.DraughtsServiceReference {
         System.Threading.Tasks.Task<bool> InviteAsync(string sender, string recipient);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/logOut", ReplyAction="Draught/IPortal/logOutResponse")]
-        void logOut();
+        bool logOut(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/logOut", ReplyAction="Draught/IPortal/logOutResponse")]
-        System.Threading.Tasks.Task logOutAsync();
+        System.Threading.Tasks.Task<bool> logOutAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="Draught/IPortal/Subscribe", ReplyAction="Draught/IPortal/SubscribeResponse")]
         void Subscribe();
@@ -253,12 +253,12 @@ namespace Draghts.DraughtsServiceReference {
             return base.Channel.InviteAsync(sender, recipient);
         }
         
-        public void logOut() {
-            base.Channel.logOut();
+        public bool logOut(string name) {
+            return base.Channel.logOut(name);
         }
         
-        public System.Threading.Tasks.Task logOutAsync() {
-            return base.Channel.logOutAsync();
+        public System.Threading.Tasks.Task<bool> logOutAsync(string name) {
+            return base.Channel.logOutAsync(name);
         }
         
         public void Subscribe() {

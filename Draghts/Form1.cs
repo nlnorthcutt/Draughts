@@ -438,5 +438,14 @@ namespace Draghts
         {
             PortalProxy.proxy.quitGame(Proxy.myUsername,Proxy.myUsername+" just quit :-(");
         }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            if (Proxy.proxy.logOut(Proxy.myUsername))
+            {
+                Proxy.loddy.Close();
+                Proxy.login.Show();
+            }
+        }
     }
 }
