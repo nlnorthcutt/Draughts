@@ -9,3 +9,6 @@ C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.Properties.Resour
 C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.csproj.GenerateResource.Cache
 C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.exe
 C:\Users\Koech\Desktop\draughts-game\Draghts\obj\Debug\Draghts.pdb
+C:\Users\nnorthcutt\Documents\Draughts\Draghts\bin\Debug\Draghts.exe.config
+C:\Users\nnorthcutt\Documents\Draughts\Draghts\obj\Debug\Draghts.exe
+C:\Users\nnorthcutt\Documents\Draughts\Draghts\obj\Debug\Draghts.pdb
